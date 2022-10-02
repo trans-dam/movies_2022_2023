@@ -53,7 +53,6 @@ const kSettingsGradientButton = LinearGradient(
 );
 
 const kVoteStyle = TextStyle(
-  fontFamily: "main",
   fontWeight: FontWeight.bold,
   color: kMainTextColor,
   fontSize: 15.0,
@@ -64,14 +63,12 @@ const kLargeTitleStyle = TextStyle(
   fontSize: 28.0,
   fontWeight: FontWeight.bold,
   color: kPrimaryLabelColor,
-  fontFamily: "main",
   decoration: TextDecoration.none,
 );
 const kTitle1Style = TextStyle(
   fontSize: 24.0,
   fontWeight: FontWeight.bold,
   color: kPrimaryLabelColor,
-  fontFamily: "main",
   decoration: TextDecoration.none,
 );
 
@@ -79,12 +76,10 @@ const kTitleSection = TextStyle(
   fontSize: 22.0,
   fontWeight: FontWeight.normal,
   color: kMainTextColor,
-  fontFamily: "main",
   decoration: TextDecoration.none,
 );
 
 const kCardTitleStyle = TextStyle(
-  fontFamily: "main",
   fontWeight: FontWeight.bold,
   color: kMainTextColor,
   fontSize: 15.0,
@@ -92,7 +87,6 @@ const kCardTitleStyle = TextStyle(
 );
 
 const kTagLineStyle = TextStyle(
-  fontFamily: "main",
   fontWeight: FontWeight.w400,
   fontStyle: FontStyle.italic,
   color: kSecondColor,
@@ -101,7 +95,6 @@ const kTagLineStyle = TextStyle(
 );
 
 const kGenreStyle = TextStyle(
-  fontFamily: "main",
   fontWeight: FontWeight.w400,
   fontStyle: FontStyle.normal,
   color: kThirdColor,
@@ -111,11 +104,9 @@ const kGenreStyle = TextStyle(
 const kSubtitleStyle = TextStyle(
   fontSize: 16.0,
   color: kSecondaryLabelColor,
-  fontFamily: "main",
   decoration: TextDecoration.none,
 );
 const kCardSubtitleStyle = TextStyle(
-  fontFamily: "main",
   color: Color(0xE6FFFFFF),
   fontSize: 13.0,
   decoration: TextDecoration.none,
@@ -124,26 +115,22 @@ const kCardSubtitleStyle = TextStyle(
 const kBodyLabelStyle = TextStyle(
   fontSize: 14.0,
   color: Colors.black,
-  fontFamily: "main",
   decoration: TextDecoration.none,
 );
 const kCaptionLabelStyle = TextStyle(
   fontSize: 14.0,
   color: kSecondaryLabelColor,
-  fontFamily: "main",
   decoration: TextDecoration.none,
 );
 
 var kLoginInputTextStyle = TextStyle(
   fontSize: 15.0,
   color: Colors.black.withOpacity(0.3),
-  fontFamily: "main",
   decoration: TextDecoration.none,
 );
 const kCalloutLabelStyle =  TextStyle(
   fontSize: 20.0,
   fontWeight: FontWeight.w800,
   color: kPrimaryLabelColor,
-  fontFamily: "main",
   decoration: TextDecoration.none,
 );
