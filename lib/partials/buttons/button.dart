@@ -9,26 +9,20 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      padding: const EdgeInsets.symmetric(
-          horizontal: kHorizontalSpacer, vertical: kVerticalSpacer / 2),
-      margin: const EdgeInsets.only(top: kVerticalSpacer),
-      decoration: BoxDecoration(
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: kVerticalSpacer / 2),
+        decoration: BoxDecoration(
+          color: kCardPopupBackgroundColor,
           borderRadius: kBorderRadiusItem,
           boxShadow: kBoxShadowItem,
-          color: Colors.white),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          TextButton(
-            onPressed: onPressed,
-            child: Text(
-              label,
-              style: kTitleSection.copyWith(fontSize: 20),
-            ),
-          ),
-        ],
+        ),
+        child: Text(
+          label,
+          textAlign: TextAlign.center,
+          style: kCalloutLabelStyle,
+        ),
       ),
     );
   }

@@ -60,7 +60,7 @@ const kVoteStyle = TextStyle(
 );
 // Text Styles
 const kLargeTitleStyle = TextStyle(
-  fontSize: 28.0,
+  fontSize: 42.0,
   fontWeight: FontWeight.bold,
   color: kPrimaryLabelColor,
   decoration: TextDecoration.none,
@@ -104,6 +104,7 @@ const kGenreStyle = TextStyle(
 const kSubtitleStyle = TextStyle(
   fontSize: 16.0,
   color: kSecondaryLabelColor,
+  fontStyle: FontStyle.italic,
   decoration: TextDecoration.none,
 );
 const kCardSubtitleStyle = TextStyle(
@@ -123,14 +124,16 @@ const kCaptionLabelStyle = TextStyle(
   decoration: TextDecoration.none,
 );
 
-var kLoginInputTextStyle = TextStyle(
-  fontSize: 15.0,
-  color: Colors.black.withOpacity(0.3),
+const kLoginInputTextStyle = TextStyle(
+  fontSize: 17.0,
+  color: kMainTextColor,
+  fontWeight: FontWeight.w400,
   decoration: TextDecoration.none,
 );
-const kCalloutLabelStyle =  TextStyle(
+
+const kCalloutLabelStyle = TextStyle(
   fontSize: 20.0,
-  fontWeight: FontWeight.w800,
+  fontWeight: FontWeight.w700,
   color: kPrimaryLabelColor,
   decoration: TextDecoration.none,
 );

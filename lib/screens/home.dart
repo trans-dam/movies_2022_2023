@@ -1,4 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:movies/partials/form/textInput.dart';
+import 'package:movies/screens/login_form.dart';
 import 'package:movies/styles/constants.dart';
 
 class Home extends StatefulWidget {
@@ -24,9 +27,7 @@ class _HomePageState extends State<Home> with TickerProviderStateMixin {
     return const Scaffold(
       body: SafeArea(
         bottom: false,
-        child: Center(
-          child: Text("Hello", style: kTitle1Style),
-        ),
+        child: LoginForm(),
       ),
     );
   }
