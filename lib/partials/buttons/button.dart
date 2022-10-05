@@ -11,13 +11,11 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      padding: const EdgeInsets.symmetric(
-          horizontal: kHorizontalSpacer, vertical: kVerticalSpacer / 2),
-      margin: const EdgeInsets.only(top: kVerticalSpacer),
+      margin: const EdgeInsets.only(top: kVerticalSpacer * 2),
       decoration: BoxDecoration(
           borderRadius: kBorderRadiusItem,
           boxShadow: kBoxShadowItem,
-          color: Colors.white),
+          color: kCardPopupBackgroundColor),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
