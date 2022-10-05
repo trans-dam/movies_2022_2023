@@ -25,7 +25,7 @@ class _HomePageState extends State<Home> with TickerProviderStateMixin {
       body: SafeArea(
         bottom: false,
         child: Center(
-          child: Text("Hello", style: kTitle1Style),
+          child: Text("Helloo", style: kTitle1Style),
         ),
       ),
     );
