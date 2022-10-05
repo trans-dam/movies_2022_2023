@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import '../../styles/constants.dart';
 
 class TextInput extends StatefulWidget {
-  TextInput(this.icon, this.label, [this.obscureText = false]) : super();
+  TextInput(this.icon, this.label, this.validator, [this.obscureText = false])
+      : super();
   final Icon icon;
   final String label;
   final bool obscureText;
+  final FormFieldValidator<String> validator;
 
   @override
   State<TextInput> createState() => _TextInputState();
@@ -17,6 +19,7 @@ class _TextInputState extends State<TextInput> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: widget.validator,
       onChanged: (event) {
         if (kDebugMode) {
           print(event.characters);

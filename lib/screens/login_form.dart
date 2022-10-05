@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/partials/buttons/button.dart';
 
@@ -5,85 +6,101 @@ import '../partials/form/textInput.dart';
 import '../styles/constants.dart';
 
 class LoginForm extends StatelessWidget {
-  const LoginForm({Key? key}) : super(key: key);
+  LoginForm({Key? key}) : super(key: key);
+  final _loginFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: kHorizontalSpacer,
-        vertical: 0,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: Column(
-              children: const [
-                Text(
-                  'Movies',
-                  style: kLargeTitleStyle,
-                ),
-                Text(
-                  'L’application pour découvrir des nouveaux film.',
-                  style: kSubtitleStyle,
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(
-                top: kVerticalSpacer * 3, bottom: kVerticalSpacer / 2),
-            padding: const EdgeInsets.symmetric(
-              vertical: kVerticalSpacer / 2,
-              horizontal: kHorizontalSpacer,
-            ),
-            decoration: BoxDecoration(
-                color: kCardPopupBackgroundColor,
-                boxShadow: kBoxShadowItem,
-                borderRadius: kBorderRadiusItem),
-            child: Column(
-              children: [
-                TextInput(
-                  const Icon(
-                    Icons.mail,
-                    color: kMainTextColor,
+    return Form(
+      key: _loginFormKey,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: kHorizontalSpacer,
+          vertical: 0,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Center(
+              child: Column(
+                children: const [
+                  Text(
+                    'Movies',
+                    style: kLargeTitleStyle,
                   ),
-                  'Votre email',
-                ),
-                const Divider(
-                  color: kMainTextColor,
-                  height: kVerticalSpacer * 2,
-                ),
-                TextInput(
+                  Text(
+                    'L’application pour découvrir des nouveaux film.',
+                    style: kSubtitleStyle,
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(
+                  top: kVerticalSpacer * 3, bottom: kVerticalSpacer / 2),
+              padding: const EdgeInsets.symmetric(
+                vertical: kVerticalSpacer / 2,
+                horizontal: kHorizontalSpacer,
+              ),
+              decoration: BoxDecoration(
+                  color: kCardPopupBackgroundColor,
+                  boxShadow: kBoxShadowItem,
+                  borderRadius: kBorderRadiusItem),
+              child: Column(
+                children: [
+                  TextInput(
                     const Icon(
-                      Icons.password,
+                      Icons.mail,
                       color: kMainTextColor,
                     ),
-                    'Votre mot de passe',
-                    true),
+                    'Votre email',
+                    (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'L’adresse mail doit être renseignée.';
+                      } else if (!EmailValidator.validate(value)) {
+                        return 'L’adresse mail doit être une adresse mail valide.';
+                      }
+                    },
+                  ),
+                  const Divider(
+                    color: kMainTextColor,
+                    height: kVerticalSpacer * 2,
+                  ),
+                  TextInput(
+                      const Icon(
+                        Icons.password,
+                        color: kMainTextColor,
+                      ),
+                      'Votre mot de passe', (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Le mot de passe doit être défini.';
+                    } else if (value.length < 9) {
+                      return 'Le mot de passe doit contenir au moins 9 caractères.';
+                    }
+                  }, true),
+                ],
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const [
+                Text(
+                  'Créer un compte',
+                  style: kTagLineStyle,
+                ),
+                Text(
+                  'Mot de passe oublié',
+                  style: kTagLineStyle,
+                ),
               ],
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              Text(
-                'Créer un compte',
-                style: kTagLineStyle,
-              ),
-              Text(
-                'Mot de passe oublié',
-                style: kTagLineStyle,
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: kVerticalSpacer * 2,
-          ),
-          Button('Se connecter', () {})
-        ],
+            const SizedBox(
+              height: kVerticalSpacer * 2,
+            ),
+            Button('Se connecter', () {})
+          ],
+        ),
       ),
     );
   }

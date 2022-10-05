@@ -1,8 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:movies/partials/form/textInput.dart';
 import 'package:movies/screens/login_form.dart';
-import 'package:movies/styles/constants.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -24,7 +22,7 @@ class _HomePageState extends State<Home> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
         bottom: false,
         child: LoginForm(),

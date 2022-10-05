@@ -1,8 +1,6 @@
 import 'package:movies/screens/home.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'styles/constants.dart';
+import 'package:movies/styles/constants.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,6 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         fontFamily: 'Avenir',
+        backgroundColor: kMainBackgroundColor
       ),
       home: Home(),
     );
