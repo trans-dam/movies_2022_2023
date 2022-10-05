@@ -22,10 +22,10 @@ class _HomePageState extends State<Home> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SafeArea(
         bottom: false,
-        child: LoginForm(),
+        child: Text("Home"),
       ),
     );
   }
