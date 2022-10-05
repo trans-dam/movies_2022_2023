@@ -2,7 +2,6 @@ import 'package:movies/screens/home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'styles/constants.dart';
 
 void main() {
   runApp(MyApp());
