@@ -24,7 +24,9 @@ class _RegisterFormState extends State<RegisterForm> {
                 "Register form",
                 style: kLargeTitleStyle,
               ),
-              Button('Go back', () {}),
+              Button('Go back', () {
+                Navigator.pop(context);
+              }),
             ],
           ),
         ),

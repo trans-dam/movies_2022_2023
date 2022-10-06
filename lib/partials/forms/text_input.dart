@@ -7,8 +7,9 @@ class TextInput extends StatelessWidget {
   final String _hintText;
   final String _labelText;
   final bool _obscureText;
+  final FormFieldValidator<String> _validator;
 
-  const TextInput(this._icon, this._hintText, this._labelText,
+  const TextInput(this._icon, this._hintText, this._labelText, this._validator,
       [this._obscureText = false])
       : super();
 
@@ -23,7 +24,7 @@ class TextInput extends StatelessWidget {
           labelText: _labelText,
           labelStyle: kLoginInputTextStyle,
           border: InputBorder.none),
-      validator: (String? value) {},
+      validator: _validator,
     );
   }
 }

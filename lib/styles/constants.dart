@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 const kMainBackgroundColor = Color(0xFFeaeaea);
-const kCardPopupBackgroundColor = Color(0xFFfdf6e3);
+const kCardPopupBackgroundColor = Color(0xFFf5f8ff);
 const kMainTextColor = Color(0xFF254D60);
 const kMainTextColorLighter = Color(0xFF448CAD);
 const kSecondColor = Color(0xFF3F8EFC);
@@ -128,7 +128,7 @@ var kLoginInputTextStyle = TextStyle(
   color: Colors.black.withOpacity(0.3),
   decoration: TextDecoration.none,
 );
-const kCalloutLabelStyle =  TextStyle(
+const kCalloutLabelStyle = TextStyle(
   fontSize: 20.0,
   fontWeight: FontWeight.w800,
   color: kPrimaryLabelColor,

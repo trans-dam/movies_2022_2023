@@ -1,25 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:movies/partials/buttons/button.dart';
-import 'package:movies/styles/constants.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+import '../styles/constants.dart';
+
+class ResetPassword extends StatefulWidget {
+  const ResetPassword({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  State<ResetPassword> createState() => _ResetPasswordState();
 }
 
-class _HomePageState extends State<Home> with TickerProviderStateMixin {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
-
+class _ResetPasswordState extends State<ResetPassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,8 +20,8 @@ class _HomePageState extends State<Home> with TickerProviderStateMixin {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                "Home",
+              const Text(
+                "Register form",
                 style: kLargeTitleStyle,
               ),
               Button('Go back', () {
