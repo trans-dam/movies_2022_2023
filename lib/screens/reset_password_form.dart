@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../partials/buttons/button.dart';
+
 class ResetPasswordForm extends StatefulWidget {
   const ResetPasswordForm({Key? key}) : super(key: key);
 
@@ -13,7 +15,16 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Text("Reset Password"),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text("Register"),
+            Button('Retour', () {
+              Navigator.pop(context);
+            })
+          ],
+        ),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies/partials/buttons/button.dart';
 
 class RegisterForm extends StatefulWidget {
   const RegisterForm({Key? key}) : super(key: key);
@@ -12,7 +13,15 @@ class _RegisterFormState extends State<RegisterForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Text("Register"),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Register"),
+            Button('Retour', () {
+              Navigator.pop(context);
+            })
+          ],
+        ),
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/partials/buttons/button.dart';
+import 'package:movies/partials/headers/header.dart';
 import 'package:movies/partials/links/link.dart';
 import 'package:movies/routes/routes.dart';
 
@@ -27,19 +28,8 @@ class LoginForm extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Center(
-                  child: Column(
-                    children: const [
-                      Text(
-                        'Movies',
-                        style: kLargeTitleStyle,
-                      ),
-                      Text(
-                        'L’application pour découvrir des nouveaux film.',
-                        style: kSubtitleStyle,
-                      ),
-                    ],
-                  ),
+                const Center(
+                  child: LoginHeader(),
                 ),
                 Container(
                   margin: const EdgeInsets.only(
@@ -94,9 +84,10 @@ class LoginForm extends StatelessWidget {
                       Navigator.pushNamed(context, kRegisterRoute);
                     }),
                     Link(
-                      'Mot de passe oublié',() {
-                      Navigator.pushNamed(context, kResetPasswordRoute);
-                    },
+                      'Mot de passe oublié',
+                      () {
+                        Navigator.pushNamed(context, kResetPasswordRoute);
+                      },
                     ),
                   ],
                 ),
