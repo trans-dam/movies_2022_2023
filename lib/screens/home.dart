@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:movies/headers/form_header.dart';
+import 'package:movies/partials/forms/text_input.dart';
 import 'package:movies/styles/constants.dart';
 
 class Home extends StatefulWidget {
@@ -21,11 +23,40 @@ class _HomePageState extends State<Home> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: SafeArea(
-        bottom: false,
         child: Center(
-          child: Text("Hello 2.0", style: kTitle1Style),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: kHorizontalSpacer),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const FormHeader(),
+                Container(
+                  margin: const EdgeInsets.only(
+                      top: kVerticalSpacer * 2, bottom: kVerticalSpacer / 2),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: kHorizontalSpacer,
+                      vertical: kVerticalSpacer / 4),
+                  decoration: BoxDecoration(
+                    color: kCardPopupBackgroundColor,
+                  ),
+                  child: Column(
+                    children: [
+                      TextInput(const Icon(
+                        Icons.mail,
+                        color: kMainTextColor,
+                      ),'votre@mail.com'),
+                      const Divider(
+                        height: kVerticalSpacer,
+                        color: kMainTextColor,
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
         ),
       ),
     );

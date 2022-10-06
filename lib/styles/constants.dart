@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 const kMainBackgroundColor = Color(0xFFeaeaea);
-const kCardPopupBackgroundColor = Color(0xFFF5F8FF);
+const kCardPopupBackgroundColor = Color(0xFFfdf6e3);
 const kMainTextColor = Color(0xFF254D60);
 const kMainTextColorLighter = Color(0xFF448CAD);
 const kSecondColor = Color(0xFF3F8EFC);
