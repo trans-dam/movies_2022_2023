@@ -8,7 +8,7 @@ import '../screens/register_form.dart';
 
 Map<String, WidgetBuilder> router = {
   kDefaultRoute: (context) => const Home(),
-  kRegisterRoute: (context) => RegisterForm(),
+  kRegisterRoute: (context) => const RegisterForm(),
   kLoginRoute: (context) => LoginForm(),
-  kResetPasswordRoute: (context) => ResetPasswordForm(),
+  kResetPasswordRoute: (context) => const ResetPasswordForm(),
 };

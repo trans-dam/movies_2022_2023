@@ -1,12 +1,11 @@
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/partials/buttons/button.dart';
 import 'package:movies/partials/headers/header.dart';
 import 'package:movies/partials/links/link.dart';
 import 'package:movies/routes/routes.dart';
-
-import '../partials/form/textInput.dart';
+import '../partials/form/email_input.dart';
+import '../partials/form/password_inout.dart';
 import '../styles/constants.dart';
 
 class LoginForm extends StatelessWidget {
@@ -43,41 +42,13 @@ class LoginForm extends StatelessWidget {
                       boxShadow: kBoxShadowItem,
                       borderRadius: kBorderRadiusItem),
                   child: Column(
-                    children: [
-                      TextInput(
-                        const Icon(
-                          Icons.mail,
-                          color: kMainTextColor,
-                        ),
-                        'Votre email',
-                        'exemple@mail.com',
-                        TextInputType.emailAddress,
-                        (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'L’adresse mail doit être renseignée.';
-                          } else if (!EmailValidator.validate(value)) {
-                            return 'L’adresse mail doit être une adresse mail valide.';
-                          }
-                        },
-                      ),
-                      const Divider(
+                    children: const [
+                      EmailInput(),
+                      Divider(
                         color: kMainTextColor,
                         height: kVerticalSpacer * 2,
                       ),
-                      TextInput(
-                          const Icon(
-                            Icons.password,
-                            color: kMainTextColor,
-                          ),
-                          'Votre mot de passe',
-                          '',
-                          TextInputType.visiblePassword, (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Le mot de passe doit être défini.';
-                        } else if (value.length < 9) {
-                          return 'Le mot de passe doit contenir au moins 9 caractères.';
-                        }
-                      }, true),
+                      PasswordInput(),
                     ],
                   ),
                 ),
