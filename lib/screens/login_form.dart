@@ -50,6 +50,8 @@ class LoginForm extends StatelessWidget {
                           color: kMainTextColor,
                         ),
                         'Votre email',
+                        'exemple@mail.com',
+                        TextInputType.emailAddress,
                         (value) {
                           if (value == null || value.isEmpty) {
                             return 'L’adresse mail doit être renseignée.';
@@ -67,7 +69,9 @@ class LoginForm extends StatelessWidget {
                             Icons.password,
                             color: kMainTextColor,
                           ),
-                          'Votre mot de passe', (value) {
+                          'Votre mot de passe',
+                          '',
+                          TextInputType.visiblePassword, (value) {
                         if (value == null || value.isEmpty) {
                           return 'Le mot de passe doit être défini.';
                         } else if (value.length < 9) {

@@ -3,39 +3,41 @@ import 'package:flutter/material.dart';
 
 import '../../styles/constants.dart';
 
-class TextInput extends StatefulWidget {
-  TextInput(this.icon, this.label, this.validator, [this.obscureText = false])
+class TextInput extends StatelessWidget {
+  TextInput(this._icon, this._labelText, this._hintText, this._keyboardType,
+      this._validator,
+      [this._obscureText = false])
       : super();
-  final Icon icon;
-  final String label;
-  final bool obscureText;
-  final FormFieldValidator<String> validator;
+  final Icon _icon;
+  final String _hintText;
+  final String _labelText;
+  final bool _obscureText;
+  final TextInputType _keyboardType;
+  final FormFieldValidator<String> _validator;
 
-  @override
-  State<TextInput> createState() => _TextInputState();
-}
-
-class _TextInputState extends State<TextInput> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      validator: widget.validator,
+      validator: _validator,
+      keyboardType: _keyboardType,
       onChanged: (event) {
         if (kDebugMode) {
           print(event.characters);
         }
       },
-      obscureText: widget.obscureText,
+      obscureText: _obscureText,
       autofocus: true,
       cursorColor: kMainTextColor,
       style: kLoginInputTextStyle,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.zero,
-        hintText: widget.label,
+        hintText: _hintText,
         isDense: true,
+        labelText: _labelText,
+        labelStyle: kLoginInputTextStyle,
         iconColor: kMainTextColor,
         border: InputBorder.none,
-        icon: widget.icon,
+        icon: _icon,
       ),
     );
   }
