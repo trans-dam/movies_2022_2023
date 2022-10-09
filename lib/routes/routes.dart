@@ -1,4 +1,5 @@
 const String kLoginRoute = '/login';
 const String kRegisterRoute = '/register';
 const String kResetPasswordRoute = '/resetPassword';
-const String kDefaultRoute = kLoginRoute;
+const String kHomeRoute = '/';
+const String kDefaultRoute = kHomeRoute;

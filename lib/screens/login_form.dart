@@ -73,7 +73,7 @@ class LoginForm extends StatelessWidget {
                   if (_loginFormKey.currentState != null &&
                       _loginFormKey.currentState!.validate()) {
                     if (kDebugMode) {
-                      print('OK');
+                      Navigator.pushNamed(context, kHomeRoute);
                     } else {
                       if (kDebugMode) {
                         print('KO');
