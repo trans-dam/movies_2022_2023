@@ -9,31 +9,35 @@ class NavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: const [
-        SizedBox(
-          width: kHorizontalSpacer,
-        ),
-        BurgerMenu(),
-        SizedBox(
-          width: kHorizontalSpacer,
-        ),
-        SearchInput(),
-        SizedBox(
-          width: kHorizontalSpacer,
-        ),
-        Icon(
-          Icons.notifications,
-          color: kMainTextColor,
-        ),
-        SizedBox(
-          width: kHorizontalSpacer,
-        ),
-        Avatar(),
-        SizedBox(
-          width: kHorizontalSpacer,
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(
+          top: kVerticalSpacer / 2, bottom: kVerticalSpacer),
+      child: Row(
+        children: const [
+          SizedBox(
+            width: kHorizontalSpacer,
+          ),
+          BurgerMenu(),
+          SizedBox(
+            width: kHorizontalSpacer,
+          ),
+          SearchInput(),
+          SizedBox(
+            width: kHorizontalSpacer,
+          ),
+          Icon(
+            Icons.notifications,
+            color: kMainTextColor,
+          ),
+          SizedBox(
+            width: kHorizontalSpacer,
+          ),
+          Avatar(),
+          SizedBox(
+            width: kHorizontalSpacer,
+          ),
+        ],
+      ),
     );
   }
 }

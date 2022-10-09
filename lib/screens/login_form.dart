@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/partials/buttons/button.dart';
-import 'package:movies/partials/headers/header.dart';
+import 'package:movies/partials/headers/form_header.dart';
 import 'package:movies/partials/links/link.dart';
 import 'package:movies/routes/routes.dart';
 import '../partials/form/email_input.dart';
@@ -28,7 +28,7 @@ class LoginForm extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Center(
-                  child: LoginHeader(),
+                  child: FormHeader(),
                 ),
                 Container(
                   margin: const EdgeInsets.only(

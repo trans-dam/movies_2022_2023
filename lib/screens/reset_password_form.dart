@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../partials/buttons/button.dart';
 import '../partials/form/email_input.dart';
-import '../partials/headers/header.dart';
+import '../partials/headers/form_header.dart';
 import '../partials/links/link.dart';
 import '../routes/routes.dart';
 import '../styles/constants.dart';
@@ -33,7 +33,7 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Center(
-                  child: LoginHeader(),
+                  child: FormHeader(),
                 ),
                 Container(
                   margin: const EdgeInsets.only(

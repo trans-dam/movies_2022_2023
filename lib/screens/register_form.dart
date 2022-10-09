@@ -5,7 +5,7 @@ import 'package:movies/partials/form/email_input.dart';
 import 'package:movies/partials/form/password_inout.dart';
 import 'package:movies/partials/form/username_input.dart';
 
-import '../partials/headers/header.dart';
+import '../partials/headers/form_header.dart';
 import '../partials/links/link.dart';
 import '../routes/routes.dart';
 import '../styles/constants.dart';
@@ -36,7 +36,7 @@ class _RegisterFormState extends State<RegisterForm> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Center(
-                  child: LoginHeader(),
+                  child: FormHeader(),
                 ),
                 Container(
                   margin: const EdgeInsets.only(
