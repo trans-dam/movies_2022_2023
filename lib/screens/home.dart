@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/partials/headers/section_header.dart';
 import 'package:movies/partials/navbar/nav_bar.dart';
+import 'package:movies/partials/sliders/media_slider.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -28,9 +29,10 @@ class _HomePageState extends State<Home> with TickerProviderStateMixin {
         bottom: false,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            NavBar(),
-            SectionHeader('Films populaires', 'Cette semaine')
+          children: [
+            const NavBar(),
+            const SectionHeader('Films populaires', 'Cette semaine'),
+            MediaSlider()
           ],
         ),
       ),

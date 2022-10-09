@@ -58,6 +58,12 @@ const kVoteStyle = TextStyle(
   fontSize: 15.0,
   decoration: TextDecoration.none,
 );
+const kVoteStyleSmall = TextStyle(
+  fontWeight: FontWeight.bold,
+  color: kMainTextColor,
+  fontSize: 11.0,
+  decoration: TextDecoration.none,
+);
 // Text Styles
 const kLargeTitleStyle = TextStyle(
   fontSize: 42.0,
@@ -137,3 +143,4 @@ const kCalloutLabelStyle = TextStyle(
   color: kPrimaryLabelColor,
   decoration: TextDecoration.none,
 );
+const double kCircularPercentIndicatorRadius = 30;
