@@ -22,7 +22,8 @@ class _BurgerMenuState extends State<BurgerMenu> {
           boxShadow: kBoxShadowItem,
         ),
         child: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 5, vertical: 11),
+          padding: EdgeInsets.symmetric(
+              horizontal: kHorizontalSpacer / 4, vertical: kVerticalSpacer / 2),
           child: Image(
             width: 30,
             height: 14,

@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: kHomeRoute,
       routes: {
-        kHomeRoute: (context) => const Home(),
+        kHomeRoute: (context) => Home(),
         kLoginRoute: (context) => LoginForm(),
         kResetPasswordRoute: (context) => ResetPasswordForm(),
         kRegisterRoute: (context) => RegisterForm(),

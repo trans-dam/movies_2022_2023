@@ -1,28 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:movies/partials/navbar/nav_bar.dart';
+import 'package:movies/partials/sliders/media_slider.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+import '../models/media.dart';
 
-  @override
-  _HomePageState createState() => _HomePageState();
-}
+class Home extends StatelessWidget {
+  Home({Key? key}) : super(key: key);
 
-class _HomePageState extends State<Home> with TickerProviderStateMixin {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
+  late Future<Media> futureMedia;
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Home'),
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          children: const [
+            NavBar(),
+            MediaSlider(),
+          ],
+        ),
       ),
     );
   }
