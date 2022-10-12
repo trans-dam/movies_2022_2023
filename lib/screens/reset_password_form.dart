@@ -3,23 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:movies/partials/buttons/button.dart';
 import 'package:movies/routes/routes.dart';
 import 'package:movies/styles/constants.dart';
-
-import '../partials/form/email_input.dart';
 import '../partials/form/password_input.dart';
-import '../partials/form/username_input.dart';
 import '../partials/headers/login_header.dart';
 import '../partials/links/link.dart';
 
-class RegisterForm extends StatelessWidget {
-  RegisterForm({Key? key}) : super(key: key);
+class ResetPasswordForm extends StatelessWidget {
+  ResetPasswordForm({Key? key}) : super(key: key);
 
-  final _registerFormKey = GlobalKey<FormState>();
+  final _loginFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Form(
-        key: _registerFormKey,
+        key: _loginFormKey,
         child: SafeArea(
           bottom: false,
           child: Padding(
@@ -44,16 +41,6 @@ class RegisterForm extends StatelessWidget {
                         borderRadius: kBorderRadiusItem),
                     child: Column(
                       children: const [
-                        UserNameInput(),
-                        Divider(
-                          color: kMainTextColor,
-                          height: kVerticalSpacer * 2,
-                        ),
-                        EmailInput(),
-                        Divider(
-                          color: kMainTextColor,
-                          height: kVerticalSpacer * 2,
-                        ),
                         PasswordInput(),
                       ],
                     ),
@@ -62,16 +49,16 @@ class RegisterForm extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Link('Se connecter', () {
-                        Navigator.pop(context);
+                        Navigator.pushNamed(context, kLoginRoute);
                       }),
-                      Link('Mot de passe oublié', () {
-                        Navigator.pushNamed(context, kResetPasswordRoute);
+                      Link('Créer un compte', () {
+                        Navigator.pushNamed(context, kRegisterRoute);
                       }),
                     ],
                   ),
-                  Button('Créer mon compte', () {
+                  Button('Envoyer l’email de réinitialisation', () {
                     if (kDebugMode) {
-                      if (_registerFormKey.currentState!.validate()) {
+                      if (_loginFormKey.currentState!.validate()) {
                         print('OK');
                       } else {
                         print('KO');

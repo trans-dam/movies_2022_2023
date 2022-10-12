@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/screens/login_form.dart';
 import 'package:movies/screens/register_form.dart';
+import 'package:movies/screens/reset_password_form.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
       routes: {
         kHomeRoute: (context) => const Home(),
         kLoginRoute: (context) => LoginForm(),
-        kRegisterRoute: (context) => const RegisterForm(),
+        kResetPasswordRoute: (context) => ResetPasswordForm(),
+        kRegisterRoute: (context) => RegisterForm(),
       },
       theme: ThemeData(
         fontFamily: 'Avenir',
