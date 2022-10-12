@@ -25,47 +25,49 @@ class ResetPasswordForm extends StatelessWidget {
               vertical: kVerticalSpacer,
             ),
             child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const LoginHeader(),
-                  Container(
-                    margin: const EdgeInsets.only(
-                        top: kVerticalSpacer * 2, bottom: kVerticalSpacer / 2),
-                    padding: const EdgeInsets.symmetric(
-                        vertical: kVerticalSpacer / 2,
-                        horizontal: kHorizontalSpacer),
-                    decoration: BoxDecoration(
-                        color: kCardPopupBackgroundColor,
-                        boxShadow: kBoxShadowItem,
-                        borderRadius: kBorderRadiusItem),
-                    child: Column(
-                      children: const [
-                        PasswordInput(),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const LoginHeader(),
+                    Container(
+                      margin: const EdgeInsets.only(
+                          top: kVerticalSpacer * 2, bottom: kVerticalSpacer / 2),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: kVerticalSpacer / 2,
+                          horizontal: kHorizontalSpacer),
+                      decoration: BoxDecoration(
+                          color: kCardPopupBackgroundColor,
+                          boxShadow: kBoxShadowItem,
+                          borderRadius: kBorderRadiusItem),
+                      child: Column(
+                        children: const [
+                          PasswordInput(),
+                        ],
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Link('Se connecter', () {
+                          Navigator.pushNamed(context, kLoginRoute);
+                        }),
+                        Link('Créer un compte', () {
+                          Navigator.pushNamed(context, kRegisterRoute);
+                        }),
                       ],
                     ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Link('Se connecter', () {
-                        Navigator.pushNamed(context, kLoginRoute);
-                      }),
-                      Link('Créer un compte', () {
-                        Navigator.pushNamed(context, kRegisterRoute);
-                      }),
-                    ],
-                  ),
-                  Button('Envoyer l’email de réinitialisation', () {
-                    if (kDebugMode) {
-                      if (_loginFormKey.currentState!.validate()) {
-                        print('OK');
-                      } else {
-                        print('KO');
+                    Button('Envoyer l’email de réinitialisation', () {
+                      if (kDebugMode) {
+                        if (_loginFormKey.currentState!.validate()) {
+                          print('OK');
+                        } else {
+                          print('KO');
+                        }
                       }
-                    }
-                  })
-                ],
+                    })
+                  ],
+                ),
               ),
             ),
           ),
