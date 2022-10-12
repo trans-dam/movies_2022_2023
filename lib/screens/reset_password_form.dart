@@ -58,12 +58,12 @@ class ResetPasswordForm extends StatelessWidget {
                       ],
                     ),
                     Button('Envoyer l’email de réinitialisation', () {
-                      if (kDebugMode) {
                         if (_loginFormKey.currentState!.validate()) {
-                          print('OK');
+                         Navigator.pushNamed(context, kHomeRoute);
                         } else {
-                          print('KO');
-                        }
+                          if (kDebugMode) {
+                            print('KO');
+                          }
                       }
                     })
                   ],

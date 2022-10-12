@@ -71,12 +71,12 @@ class RegisterForm extends StatelessWidget {
                       ],
                     ),
                     Button('Créer mon compte', () {
-                      if (kDebugMode) {
                         if (_registerFormKey.currentState!.validate()) {
-                          print('OK');
+                          Navigator.pushNamed(context, kHomeRoute);
                         } else {
-                          print('KO');
-                        }
+                          if (kDebugMode) {
+                            print('KO');
+                          }
                       }
                     })
                   ],

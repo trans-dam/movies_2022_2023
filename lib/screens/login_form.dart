@@ -65,13 +65,13 @@ class LoginForm extends StatelessWidget {
                       ],
                     ),
                     Button('Se connecter', () {
-                      if (kDebugMode) {
                         if (_loginFormKey.currentState!.validate()) {
-                          print('OK');
+                          Navigator.pushNamed(context, kHomeRoute);
                         } else {
-                          print('KO');
+                          if (kDebugMode) {
+                            print('KO');
+                          }
                         }
-                      }
                     })
                   ],
                 ),
