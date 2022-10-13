@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:movies/headers/section_header.dart';
 import 'package:movies/partials/buttons/button.dart';
+import 'package:movies/partials/navbar/nav_bar.dart';
 import 'package:movies/styles/constants.dart';
 
 class Home extends StatefulWidget {
@@ -23,21 +25,15 @@ class _HomePageState extends State<Home> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: kHorizontalSpacer),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                "Home",
-                style: kLargeTitleStyle,
-              ),
-              Button('Go back', () {
-                Navigator.pop(context);
-              }),
-            ],
-          ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            NavBar(),
+            SectionHeader(
+              title: "Films populaires",
+              subtile: "Cette semaine",
+            )
+          ],
         ),
       ),
     );

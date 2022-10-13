@@ -8,7 +8,7 @@ import '../screens/home.dart';
 
 Map<String, WidgetBuilder> kRouter = {
   kHomeRoute: (context) => const Home(),
-  kInitRoute: (context) =>  LoginForm(),
+  kInitRoute: (context) =>  const Home(),
   kLoginFormRoute: (context) =>  LoginForm(),
   kRegisterFormRoute: (context) => RegisterForm(),
   kResetFormRoute: (context) => ResetPassword(),

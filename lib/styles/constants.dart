@@ -123,7 +123,7 @@ const kCaptionLabelStyle = TextStyle(
   decoration: TextDecoration.none,
 );
 
-var kLoginInputTextStyle = TextStyle(
+TextStyle kLoginInputTextStyle = TextStyle(
   fontSize: 15.0,
   color: Colors.black.withOpacity(0.3),
   decoration: TextDecoration.none,
@@ -133,4 +133,10 @@ const kCalloutLabelStyle = TextStyle(
   fontWeight: FontWeight.w800,
   color: kPrimaryLabelColor,
   decoration: TextDecoration.none,
+);
+
+BoxDecoration kBoxDecoration = BoxDecoration(
+  color: Colors.white,
+  borderRadius: kBorderRadiusItem,
+  boxShadow: kBoxShadowItem,
 );
