@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movies/headers/section_header.dart';
 import 'package:movies/partials/buttons/button.dart';
 import 'package:movies/partials/navbar/nav_bar.dart';
+import 'package:movies/partials/sliders/media_slider.dart';
 import 'package:movies/styles/constants.dart';
 
 class Home extends StatefulWidget {
@@ -33,7 +34,8 @@ class _HomePageState extends State<Home> with TickerProviderStateMixin {
             SectionHeader(
               title: "Films populaires",
               subtile: "Cette semaine",
-            )
+            ),
+            MediaSlider()
           ],
         ),
       ),
