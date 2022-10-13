@@ -9,14 +9,9 @@ import '../partials/forms/username_input.dart';
 import '../routes/routes.dart';
 import '../styles/constants.dart';
 
-class RegisterForm extends StatefulWidget {
-  const RegisterForm({Key? key}) : super(key: key);
+class RegisterForm extends StatelessWidget {
+  RegisterForm({Key? key}) : super(key: key);
 
-  @override
-  State<RegisterForm> createState() => _RegisterFormState();
-}
-
-class _RegisterFormState extends State<RegisterForm> {
   final _registerFormKey = GlobalKey<FormState>();
 
   @override
@@ -29,51 +24,54 @@ class _RegisterFormState extends State<RegisterForm> {
             child: Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: kHorizontalSpacer),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const FormHeader(),
-                  Container(
-                    margin: const EdgeInsets.only(
-                        top: kVerticalSpacer * 2, bottom: kVerticalSpacer / 2),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: kHorizontalSpacer,
-                        vertical: kVerticalSpacer / 4),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: kBorderRadiusItem,
-                        boxShadow: kBoxShadowItem),
-                    child: Column(
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const FormHeader(),
+                    Container(
+                      margin: const EdgeInsets.only(
+                          top: kVerticalSpacer * 2,
+                          bottom: kVerticalSpacer / 2),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: kHorizontalSpacer,
+                          vertical: kVerticalSpacer / 4),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: kBorderRadiusItem,
+                          boxShadow: kBoxShadowItem),
+                      child: Column(
+                        children: const [
+                          UsernameInput(),
+                          Divider(
+                            height: kVerticalSpacer,
+                            color: kMainTextColor,
+                          ),
+                          EmailInput(),
+                          Divider(
+                            height: kVerticalSpacer,
+                            color: kMainTextColor,
+                          ),
+                          PasswordInput(),
+                        ],
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [
-                        UsernameInput(),
-                        Divider(
-                          height: kVerticalSpacer,
-                          color: kMainTextColor,
-                        ),
-                        EmailInput(),
-                        Divider(
-                          height: kVerticalSpacer,
-                          color: kMainTextColor,
-                        ),
-                        PasswordInput(),
+                        Link("Se connecter"),
+                        Link("Mot de passe oublié ?", kResetFormRoute),
                       ],
                     ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Link("Créer un compte", kRegisterFormRoute),
-                      Link("Mot de passe oublié ?", kResetFormRoute),
-                    ],
-                  ),
-                  Button("Se connecter", () {
-                    print("Hello");
-                    if (_registerFormKey.currentState != null &&
-                        _registerFormKey.currentState!.validate()) {
-                      Navigator.pushNamed(context, kHomeRoute);
-                    } else {}
-                  })
-                ],
+                    Button("Créer mon compte", () {
+                      print("Hello");
+                      if (_registerFormKey.currentState != null &&
+                          _registerFormKey.currentState!.validate()) {
+                        Navigator.pushNamed(context, kHomeRoute);
+                      } else {}
+                    })
+                  ],
+                ),
               ),
             ),
           ),

@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import '../styles/constants.dart';
 
 class Link extends StatelessWidget {
-  const Link(
-    this._label,
-    this._route,
-  ) : super();
+  const Link(this._label, [this._route = ""]) : super();
 
   final String _route;
   final String _label;
@@ -15,7 +12,11 @@ class Link extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, _route);
+        if (_route.trim().isEmpty) {
+          Navigator.pop(context);
+        } else {
+          Navigator.pushNamed(context, _route);
+        }
       },
       child: Text(
         _label,
