@@ -73,8 +73,8 @@ const kTitle1Style = TextStyle(
 );
 
 const kTitleSection = TextStyle(
-  fontSize: 22.0,
-  fontWeight: FontWeight.normal,
+  fontSize: 28.0,
+  fontWeight: FontWeight.w800,
   color: kMainTextColor,
   decoration: TextDecoration.none,
 );

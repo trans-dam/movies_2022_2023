@@ -27,7 +27,8 @@ class _HomePageState extends State<Home> with TickerProviderStateMixin {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          children: [
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: const [
             NavBar(),
             SectionHeader(
               title: "Films populaires",
