@@ -13,13 +13,16 @@ class SingleMediaPicture extends StatelessWidget {
       tag: path,
       child: Container(
         decoration: BoxDecoration(
-            boxShadow: kBoxShadowItem, borderRadius: kBorderRadiusItem),
+          boxShadow: kBoxShadowItem,
+          borderRadius: kBorderRadiusItem,
+        ),
         child: ClipRRect(
           borderRadius: kBorderRadiusItem,
           child: Image.network(
             'https://image.tmdb.org/t/p/w154/$path',
             height: 230,
             width: 154,
+            fit: BoxFit.cover,
           ),
         ),
       ),
