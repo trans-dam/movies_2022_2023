@@ -4,7 +4,7 @@ import 'package:movies/partials/headers/form_header.dart';
 import 'package:movies/partials/links/link.dart';
 import 'package:movies/routes/routes.dart';
 import '../partials/form/email_input.dart';
-import '../partials/form/password_inout.dart';
+import '../partials/form/password_input.dart';
 import '../routes/router.dart';
 import '../styles/constants.dart';
 

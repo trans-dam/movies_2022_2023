@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movies/partials/headers/section_header.dart';
 import 'package:movies/partials/navbar/nav_bar.dart';
 import 'package:movies/partials/sliders/media_slider.dart';
 
@@ -26,16 +25,21 @@ class _HomePageState extends State<Home> with TickerProviderStateMixin {
     return Scaffold(
       body: SafeArea(
         bottom: false,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const NavBar(),
-            const SectionHeader(
-              title: 'Films populaires',
-              subTitle: 'Cette semaine',
-            ),
-            MediaSlider()
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: const [
+              NavBar(),
+              MediaSlider(
+                  type: 'movie',
+                  title: 'Films populaires',
+                  subtitle: 'Cette semaine'),
+              MediaSlider(
+                  type: 'tv',
+                  title: 'Séries populaires',
+                  subtitle: 'Cette semaine')
+            ],
+          ),
         ),
       ),
     );

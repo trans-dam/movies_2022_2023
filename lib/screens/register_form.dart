@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/partials/buttons/button.dart';
 import 'package:movies/partials/form/email_input.dart';
-import 'package:movies/partials/form/password_inout.dart';
+import 'package:movies/partials/form/password_input.dart';
 import 'package:movies/partials/form/username_input.dart';
 import '../partials/headers/form_header.dart';
 import '../partials/links/link.dart';
