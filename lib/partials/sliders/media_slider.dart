@@ -44,6 +44,19 @@ class _MediaSliderState extends State<MediaSlider> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return SizedBox(
+      height: 350,
+      child: PageView.builder(
+        controller: PageController(
+          initialPage: 1,
+          viewportFraction: 0.4,
+        ),
+        padEnds: false,
+        itemCount: _medias.length,
+        itemBuilder: (BuildContext context, int index) {
+          return Text(_medias[index].title);
+        },
+      ),
+    );
   }
 }
