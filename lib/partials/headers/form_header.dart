@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../styles/constants.dart';
 
+@immutable
 class FormHeader extends StatelessWidget {
   const FormHeader({Key? key}) : super(key: key);
 

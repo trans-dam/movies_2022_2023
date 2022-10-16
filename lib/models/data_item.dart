@@ -1,37 +1,33 @@
 import 'package:movies/styles/constants.dart';
 import 'package:flutter/material.dart';
 
+@immutable
 class MenuItemData {
-  final String _name;
-  final Icon _icon;
-  final LinearGradient _gradient;
+  final String name;
+  final Icon icon;
+  final LinearGradient gradient;
 
-  MenuItemData(this._name, this._icon, this._gradient);
-
-  LinearGradient get gradient => _gradient;
-
-  Icon get icon => _icon;
-
-  String get name => _name;
+  const MenuItemData(
+      {required this.name, required this.icon, required this.gradient});
 }
 
-List<MenuItemData> menuItemsData = [
+List<MenuItemData> menuItemsData = const [
   MenuItemData(
-      "Accueil",
-      const Icon(
+      name: "Accueil",
+      icon: Icon(
         Icons.home,
       ),
-      kHomeGradientButton),
+      gradient: kHomeGradientButton),
   MenuItemData(
-      "Paiement",
-      const Icon(
+      name: "Paiement",
+      icon: Icon(
         Icons.credit_card,
       ),
-      kPaymentGradientButton),
+      gradient: kPaymentGradientButton),
   MenuItemData(
-      "Réglages",
-      const Icon(
+      name: "Réglages",
+      icon: Icon(
         Icons.settings,
       ),
-      kSettingsGradientButton),
+      gradient: kSettingsGradientButton),
 ];

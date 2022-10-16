@@ -35,7 +35,7 @@ class _MediaSliderState extends State<MediaSlider> {
       } else {
         debugPrint('Oups... mauvaise réponse');
       }
-    }).onError((error, stackTrace){
+    }).onError((error, stackTrace) {
       debugPrintStack(stackTrace: stackTrace);
     });
   }
@@ -49,7 +49,6 @@ class _MediaSliderState extends State<MediaSlider> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-
       height: 350,
       child: PageView.builder(
           scrollDirection: Axis.horizontal,
@@ -63,10 +62,11 @@ class _MediaSliderState extends State<MediaSlider> {
           },
           itemBuilder: (BuildContext context, int index) {
             return Opacity(
-                //opacity: _currentMovie == index ? 1 : 0.7,
-                opacity: 1,
-                child:
-                MediaCard(_medias[index], index == _medias.length - 1));
+              //opacity: _currentMovie == index ? 1 : 0.7,
+              opacity: 1,
+              child: MediaCard(
+                  media: _medias[index], isLast: index == _medias.length - 1),
+            );
           }),
     );
   }

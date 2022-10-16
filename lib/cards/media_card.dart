@@ -7,18 +7,19 @@ import 'package:movies/styles/constants.dart';
 
 import 'media_rate.dart';
 
+@immutable
 class MediaCard extends StatefulWidget {
-  final Media _media;
-  final bool _isLast;
+  final Media media;
+  final bool isLast;
 
-  const MediaCard(this._media, this._isLast, {Key? key}) : super(key: key);
+  const MediaCard({required this.media, this.isLast = false, Key? key})
+      : super(key: key);
 
   @override
   State<MediaCard> createState() => _MediaCardState();
 }
 
 class _MediaCardState extends State<MediaCard> {
-
   late DateFormat dateFormat;
 
   @override
@@ -28,42 +29,41 @@ class _MediaCardState extends State<MediaCard> {
     dateFormat = DateFormat.yMMMMd('fr');
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
-          left: kDefaultSpacer, right: widget._isLast ? kDefaultSpacer : 0),
+          left: kDefaultSpacer, right: widget.isLast ? kDefaultSpacer : 0),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Stack(
           alignment: AlignmentDirectional.bottomStart,
           children: [
             Padding(
               padding: const EdgeInsets.only(bottom: 25),
-              child: SingleMediaPicture(widget._media.posterPath),
+              child: SingleMediaPicture(path: widget.media.posterPath),
             ),
             Row(
               children: [
                 const SizedBox(
                   width: kDefaultSpacer,
                 ),
-                MediaRate(voteAverage: widget._media.voteAverage),
+                MediaRate(voteAverage: widget.media.voteAverage),
               ],
             )
           ],
         ),
         Hero(
-          tag: widget._media.title,
+          tag: widget.media.title,
           child: Text(
-            widget._media.title,
+            widget.media.title,
             softWrap: true,
             maxLines: 2,
             style: kCardTitleStyle.apply(color: kMainTextColor),
           ),
         ),
-        const SizedBox(height: kVerticalSpacer/8),
+        const SizedBox(height: kVerticalSpacer / 8),
         Text(
-          dateFormat.format(widget._media.releaseDate),
+          dateFormat.format(widget.media.releaseDate),
           style: kCardSubtitleStyle.apply(color: kMainTextColor),
           textAlign: TextAlign.left,
         )

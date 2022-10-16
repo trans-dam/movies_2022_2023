@@ -1,10 +1,11 @@
 import 'package:movies/styles/constants.dart';
 import 'package:flutter/material.dart';
 
+@immutable
 class Stars extends StatelessWidget {
   final int withBorder;
 
-  const Stars(this.withBorder, {Key? key}) : super(key: key);
+  const Stars({required this.withBorder, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

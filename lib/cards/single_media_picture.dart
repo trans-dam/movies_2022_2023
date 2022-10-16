@@ -1,10 +1,11 @@
 import 'package:movies/styles/constants.dart';
 import 'package:flutter/material.dart';
 
+@immutable
 class SingleMediaPicture extends StatelessWidget {
   final String path;
 
-  const SingleMediaPicture(this.path, {Key? key}) : super(key: key);
+  const SingleMediaPicture({required this.path, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

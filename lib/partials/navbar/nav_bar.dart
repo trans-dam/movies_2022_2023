@@ -4,6 +4,7 @@ import 'package:movies/partials/form/search_input.dart';
 import 'package:movies/partials/navbar/burger_menu.dart';
 import 'package:movies/styles/constants.dart';
 
+@immutable
 class NavBar extends StatelessWidget {
   const NavBar({Key? key}) : super(key: key);
 

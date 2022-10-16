@@ -1,9 +1,9 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../partials/buttons/button.dart';
 import '../partials/form/email_input.dart';
 import '../partials/headers/form_header.dart';
 import '../partials/links/link.dart';
+import '../routes/router.dart';
 import '../routes/routes.dart';
 import '../styles/constants.dart';
 
@@ -55,12 +55,14 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Link('Créer un compte', () {
-                      Navigator.pushNamed(context, kRegisterRoute);
-                    }),
                     Link(
-                      'Se connecter',
-                      () {
+                        text: 'Créer un compte',
+                        onTap: () {
+                          Navigator.pushNamed(context, kRegisterRoute);
+                        }),
+                    Link(
+                      text: 'Se connecter',
+                      onTap: () {
                         Navigator.pushNamed(context, kLoginRoute);
                       },
                     ),
@@ -69,18 +71,11 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
                 const SizedBox(
                   height: kVerticalSpacer * 2,
                 ),
-                Button('Envoyer email de réinitialisation', () {
-                  if (_resetPasswordFormKey.currentState != null &&
-                      _resetPasswordFormKey.currentState!.validate()) {
-                    if (kDebugMode) {
-                      print('OK');
-                    } else {
-                      if (kDebugMode) {
-                        print('KO');
-                      }
-                    }
-                  }
-                })
+                Button(
+                    label: 'Envoyer email de réinitialisation',
+                    onPressed: () {
+                      goHome(loginFormKey: _resetPasswordFormKey, context: context);
+                    })
               ],
             ),
           ),

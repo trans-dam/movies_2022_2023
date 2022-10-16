@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
-
 import '../../styles/constants.dart';
 
+@immutable
 class SectionHeader extends StatelessWidget {
-  const SectionHeader(this._header, this._subTitle, {super.key});
+  const SectionHeader({required this.title, required this.subTitle, Key? key})
+      : super(key: key);
 
-  final String _header;
-  final String _subTitle;
+  final String title;
+  final String subTitle;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: kVerticalSpacer,horizontal: kHorizontalSpacer),
+      padding: const EdgeInsets.symmetric(
+          vertical: kVerticalSpacer, horizontal: kHorizontalSpacer),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            _header,
+            title,
             style: kTitleSection,
           ),
           Text(
-            _subTitle,
+            subTitle,
             style: kSubtitleStyle,
           ),
         ],

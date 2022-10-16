@@ -1,15 +1,24 @@
+import 'package:flutter/foundation.dart';
+
+// TODO : Check compatibility with (immutable)
+@immutable
 class MediaDetail {
-  String homePage;
-  String tagline;
-  int runtime;
-  List<dynamic> genres = [];
+  final String homePage;
+  final String tagline;
+  final int runtime;
+  final List<dynamic> genres;
 
-  MediaDetail({this.homePage = "", this.tagline = "", this.runtime = 0});
+  const MediaDetail(
+      {required this.homePage,
+      required this.tagline,
+      required this.runtime,
+      required this.genres});
 
-  void fromJson(Map<String, dynamic> json) {
-    homePage = json['homepage'];
-    tagline = json['tagline'];
-    runtime = json['runtime'];
-    genres = json['genres'];
+  MediaDetail fromJson(Map<String, dynamic> json) {
+    return MediaDetail(
+        homePage: json['homepage'],
+        tagline: json['tagline'],
+        runtime: json['runtime'],
+        genres: json['genres']);
   }
 }

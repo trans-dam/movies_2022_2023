@@ -2,6 +2,7 @@ import 'package:movies/styles/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
+@immutable
 class MediaRate extends StatelessWidget {
   const MediaRate({Key? key, required this.voteAverage}) : super(key: key);
   final double voteAverage;

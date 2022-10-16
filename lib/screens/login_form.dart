@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/partials/buttons/button.dart';
 import 'package:movies/partials/headers/form_header.dart';
@@ -6,6 +5,7 @@ import 'package:movies/partials/links/link.dart';
 import 'package:movies/routes/routes.dart';
 import '../partials/form/email_input.dart';
 import '../partials/form/password_inout.dart';
+import '../routes/router.dart';
 import '../styles/constants.dart';
 
 class LoginForm extends StatelessWidget {
@@ -55,12 +55,14 @@ class LoginForm extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Link('Créer un compte', () {
-                      Navigator.pushNamed(context, kRegisterRoute);
-                    }),
                     Link(
-                      'Mot de passe oublié',
-                      () {
+                        text: 'Créer un compte',
+                        onTap: () {
+                          Navigator.pushNamed(context, kRegisterRoute);
+                        }),
+                    Link(
+                      text: 'Mot de passe oublié',
+                      onTap: () {
                         Navigator.pushNamed(context, kResetPasswordRoute);
                       },
                     ),
@@ -69,18 +71,11 @@ class LoginForm extends StatelessWidget {
                 const SizedBox(
                   height: kVerticalSpacer * 2,
                 ),
-                Button('Se connecter', () {
-                  if (_loginFormKey.currentState != null &&
-                      _loginFormKey.currentState!.validate()) {
-                    if (kDebugMode) {
-                      Navigator.pushNamed(context, kHomeRoute);
-                    } else {
-                      if (kDebugMode) {
-                        print('KO');
-                      }
-                    }
-                  }
-                })
+                Button(
+                    label: 'Se connecter',
+                    onPressed: () {
+                      goHome(loginFormKey: _loginFormKey, context: context);
+                    })
               ],
             ),
           ),

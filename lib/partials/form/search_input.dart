@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movies/partials/form/text_input.dart';
 import 'package:movies/styles/constants.dart';
 
+@immutable
 class SearchInput extends StatelessWidget {
   const SearchInput({Key? key}) : super(key: key);
 
@@ -17,13 +18,12 @@ class SearchInput extends StatelessWidget {
             borderRadius: kBorderRadiusItem,
             boxShadow: kBoxShadowItem),
         child: TextInput(
-            Icons.search,
-            'Rechercher...',
-            'Un film, un genre, etc.',
-            TextInputType.text,
-            (value) {},
-            false,
-            false),
+            icon: Icons.search,
+            labelText: 'Rechercher...',
+            hintText: 'Un film, un genre, etc.',
+            keyboardType: TextInputType.text,
+            validator: (value) {},
+            autofocus: false),
       ),
     );
   }

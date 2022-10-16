@@ -4,9 +4,9 @@ import 'package:movies/partials/buttons/button.dart';
 import 'package:movies/partials/form/email_input.dart';
 import 'package:movies/partials/form/password_inout.dart';
 import 'package:movies/partials/form/username_input.dart';
-
 import '../partials/headers/form_header.dart';
 import '../partials/links/link.dart';
+import '../routes/router.dart';
 import '../routes/routes.dart';
 import '../styles/constants.dart';
 
@@ -18,14 +18,14 @@ class RegisterForm extends StatefulWidget {
 }
 
 class _RegisterFormState extends State<RegisterForm> {
-  final _loginFormKey = GlobalKey<FormState>();
+  final _registerFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Form(
-          key: _loginFormKey,
+          key: _registerFormKey,
           child: Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: kHorizontalSpacer,
@@ -68,12 +68,14 @@ class _RegisterFormState extends State<RegisterForm> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Link('Se connecter', () {
-                      Navigator.pushNamed(context, kLoginRoute);
-                    }),
                     Link(
-                      'Mot de passe oublié',
-                      () {
+                        text: 'Se connecter',
+                        onTap: () {
+                          Navigator.pushNamed(context, kLoginRoute);
+                        }),
+                    Link(
+                      text: 'Mot de passe oublié',
+                      onTap: () {
                         Navigator.pushNamed(context, kResetPasswordRoute);
                       },
                     ),
@@ -82,18 +84,11 @@ class _RegisterFormState extends State<RegisterForm> {
                 const SizedBox(
                   height: kVerticalSpacer * 2,
                 ),
-                Button('Créer un compte', () {
-                  if (_loginFormKey.currentState != null &&
-                      _loginFormKey.currentState!.validate()) {
-                    if (kDebugMode) {
-                      print('OK');
-                    } else {
-                      if (kDebugMode) {
-                        print('KO');
-                      }
-                    }
-                  }
-                })
+                Button(
+                    label: 'Créer un compte',
+                    onPressed: () {
+                      goHome(loginFormKey: _registerFormKey, context: context);
+                    })
               ],
             ),
           ),
