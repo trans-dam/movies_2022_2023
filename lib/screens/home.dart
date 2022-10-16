@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies/partials/navbar/nav_bar.dart';
+import 'package:movies/partials/sidebar/sidebar.dart';
 import 'package:movies/partials/sliders/media_slider.dart';
 
 class Home extends StatefulWidget {
@@ -23,6 +24,14 @@ class _HomePageState extends State<Home> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Theme(
+        data: Theme.of(context).copyWith(
+          canvasColor: Colors.transparent,
+        ),
+        child: const Drawer(
+          child: SidebarScreen(),
+        ),
+      ),
       body: SafeArea(
         bottom: false,
         child: SingleChildScrollView(
