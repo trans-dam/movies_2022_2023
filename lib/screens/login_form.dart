@@ -14,77 +14,9 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SafeArea(
-        child: Form(
-          key: _loginFormKey,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: kHorizontalSpacer,
-              vertical: 0,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Center(
-                  child: LoginHeader(),
-                ),
-                Container(
-                  margin: const EdgeInsets.only(
-                      top: kVerticalSpacer * 3, bottom: kVerticalSpacer / 2),
-                  padding: const EdgeInsets.symmetric(
-                    vertical: kVerticalSpacer / 2,
-                    horizontal: kHorizontalSpacer,
-                  ),
-                  decoration: BoxDecoration(
-                      color: kCardPopupBackgroundColor,
-                      boxShadow: kBoxShadowItem,
-                      borderRadius: kBorderRadiusItem),
-                  child: Column(
-                    children: const [
-                      EmailInput(),
-                      Divider(
-                        color: kMainTextColor,
-                        height: kVerticalSpacer * 2,
-                      ),
-                      PasswordInput(),
-                    ],
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Link('Créer un compte', () {
-                      Navigator.pushNamed(context, kRegisterRoute);
-                    }),
-                    Link(
-                      'Mot de passe oublié',
-                      () {
-                        Navigator.pushNamed(context, kResetPasswordRoute);
-                      },
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: kVerticalSpacer * 2,
-                ),
-                Button('Se connecter', () {
-                  if (_loginFormKey.currentState != null &&
-                      _loginFormKey.currentState!.validate()) {
-                    if (kDebugMode) {
-                      print('OK');
-                    } else {
-                      if (kDebugMode) {
-                        print('KO');
-                      }
-                    }
-                  }
-                })
-              ],
-            ),
-          ),
-        ),
+        child: Text('Login'),
       ),
     );
   }

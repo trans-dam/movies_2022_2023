@@ -17,10 +17,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: kDefaultRoute,
-      routes: router,
       theme: ThemeData(
-          fontFamily: 'Avenir', backgroundColor: kMainBackgroundColor),
+        fontFamily: 'Avenir',
+        backgroundColor: kMainBackgroundColor,
+      ),
+      home: Text("Main"),
     );
   }
 }
