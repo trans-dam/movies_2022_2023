@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:movies/routes/routes.dart';
 
 import '../../models/data_item.dart';
-import '../../screens/login_form.dart';
 import '../../styles/constants.dart';
 import '../avatar.dart';
 import 'menu_item.dart';
@@ -71,8 +71,7 @@ class _SidebarScreenState extends State<SidebarScreen> {
                   TextButton(
                     onPressed: () {
                       _signOut();
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => LoginForm()));
+                      Navigator.pushNamed(context, kLoginRoute);
                     },
                     child: const Text(
                       "Je me déconnecte!",
