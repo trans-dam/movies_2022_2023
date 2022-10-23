@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 
 import '../../styles/constants.dart';
 
+@immutable
 class Link extends StatelessWidget {
-  Link(this._text, this._onTap) : super();
-  final GestureTapCallback _onTap;
-  final String _text;
+  const Link({required this.text, required this.onTap, Key? key})
+      : super(key: key);
+  final GestureTapCallback onTap;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: _onTap,
+      onTap: onTap,
       child: Text(
-        _text,
+        text,
         style: kTagLineStyle,
       ),
     );

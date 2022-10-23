@@ -3,41 +3,53 @@ import 'package:flutter/material.dart';
 
 import '../../styles/constants.dart';
 
+@immutable
 class TextInput extends StatelessWidget {
-  TextInput(this._icon, this._labelText, this._hintText, this._keyboardType,
-      this._validator,
-      [this._obscureText = false])
-      : super();
-  final Icon _icon;
-  final String _hintText;
-  final String _labelText;
-  final bool _obscureText;
-  final TextInputType _keyboardType;
-  final FormFieldValidator<String> _validator;
+  const TextInput(
+      {required this.icon,
+      required this.labelText,
+      this.hintText = "",
+      this.keyboardType = TextInputType.text,
+      required this.validator,
+      this.obscureText = false,
+      this.autofocus = false,
+      Key? key})
+      : super(key: key);
+  final IconData icon;
+  final String hintText;
+  final String labelText;
+  final bool obscureText;
+  final bool autofocus;
+  final TextInputType keyboardType;
+  final FormFieldValidator<String> validator;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      validator: _validator,
-      keyboardType: _keyboardType,
+      validator: validator,
+      keyboardType: keyboardType,
       onChanged: (event) {
         if (kDebugMode) {
           print(event.characters);
         }
       },
-      obscureText: _obscureText,
-      autofocus: true,
+      obscureText: obscureText,
+      autofocus: autofocus,
       cursorColor: kMainTextColor,
       style: kLoginInputTextStyle,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.zero,
-        hintText: _hintText,
+        hintText: hintText,
+        hintStyle: kLoginInputTextStyle,
         isDense: true,
-        labelText: _labelText,
+        labelText: labelText,
         labelStyle: kLoginInputTextStyle,
         iconColor: kMainTextColor,
         border: InputBorder.none,
-        icon: _icon,
+        icon: Icon(
+          icon,
+          color: kMainTextColor,
+        ),
       ),
     );
   }

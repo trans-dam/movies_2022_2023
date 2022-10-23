@@ -1,14 +1,17 @@
-class Media {
-  int movieId;
-  String title;
-  String backdropPath;
-  String posterPath;
-  String overview;
-  double popularity;
-  double voteAverage;
-  DateTime releaseDate;
+import 'package:flutter/cupertino.dart';
 
-  Media(
+@immutable
+class Media {
+  final int movieId;
+  final String title;
+  final String backdropPath;
+  final String posterPath;
+  final String overview;
+  final double popularity;
+  final double voteAverage;
+  final DateTime releaseDate;
+
+  const Media(
       {this.movieId = 0,
       this.title = "",
       this.backdropPath = "",

@@ -1,6 +1,7 @@
 import 'package:movies/styles/constants.dart';
 import 'package:flutter/material.dart';
 
+@immutable
 class MyCloseButton extends StatelessWidget {
   const MyCloseButton({Key? key}) : super(key: key);
 

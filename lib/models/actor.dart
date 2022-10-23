@@ -1,10 +1,13 @@
+import 'package:flutter/cupertino.dart';
+
+@immutable
 class Actor {
   final String name;
   final double popularity;
   final String profilePath;
   final String character;
 
-  Actor(
+  const Actor(
       {this.name = "",
       this.popularity = 0,
       this.profilePath = "",

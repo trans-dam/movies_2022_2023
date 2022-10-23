@@ -1,6 +1,7 @@
 import 'package:movies/styles/constants.dart';
 import 'package:flutter/material.dart';
 
+@immutable
 class Avatar extends StatelessWidget {
   const Avatar({Key? key}) : super(key: key);
 
