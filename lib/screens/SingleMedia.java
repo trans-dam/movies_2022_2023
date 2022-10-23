@@ -1,65 +1,18 @@
-import 'dart:convert';
-import 'package:intl/date_symbol_data_local.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:movies/models/media.dart';
-import 'package:movies/models/media_detail.dart';
 import 'package:movies/styles/constants.dart';
-import 'package:http/http.dart' as http;
-import '../cards/backdrop_path.dart';
+
 import '../cards/single_media_picture.dart';
 import '../partials/buttons/close_button.dart';
 import '../partials/stars.dart';
 
-class SingleMedia extends StatefulWidget {
-  final Media media;
-
-  const SingleMedia({required this.media,Key? key}) : super(key: key);
-
-  @override
-  State<SingleMedia> createState() => _SingleMediaState();
-}
-
-class _SingleMediaState extends State<SingleMedia> {
-  MediaDetail? _mediaDetail;
-  DateFormat? dateFormat;
-
-  void getMediaDetailFromApi() {
-      http
-          .get(Uri.parse(
-              'https://api.themoviedb.org/3/movie/${widget.media.id}?api_key=fc0b570a0ec2e5a82a99bf4d8340e012&language=fr-fr'))
-          .then((response) {
-        if (response.statusCode == 200) {
-          setState(() {
-            _mediaDetail = MediaDetail.fromJson(jsonDecode(response.body));
-          });
-        } else {
-          throw Exception(
-              'Oups ! ${response.statusCode} : ${response.reasonPhrase} \n id ! ${widget.media.id}');
-        }
-      }).onError((error, stackTrace) {
-        throw Exception(error);
-      });
-  }
-
-  @override
-  void reassemble() {
-    super.reassemble();
-    getMediaDetailFromApi();
-    initializeDateFormatting();
-    setState(() {
-      dateFormat = DateFormat.yMMMMd('fr');
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    reassemble();
-  }
+class SingleMedia extends StatelessWidget {
+  const SingleMedia({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final _media = ModalRoute.of(context)!.settings.arguments as Media;
+    
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -67,7 +20,7 @@ class _SingleMediaState extends State<SingleMedia> {
           children: [
             Stack(
               children: [
-                BackdropPath(backdropPath: widget.media.backdropPath),
+                BackdropPath(_media.backdropPath),
                 const MyCloseButton(),
                 Positioned(
                   left: kHorizontalSpacer,
@@ -75,8 +28,8 @@ class _SingleMediaState extends State<SingleMedia> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      SingleMediaPicture(path: widget.media.posterPath),
-                      Stars(withBorder: (widget.media.voteAverage / 2).floor())
+                      SingleMediaPicture(path: _media.posterPath),
+                      Stars(withBorder: (_media.voteAverage / 2).floor() )
                     ],
                   ),
                 ),
@@ -91,9 +44,9 @@ class _SingleMediaState extends State<SingleMedia> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Hero(
-                    tag: widget.media.title,
+                    tag: _media.title,
                     child: Text(
-                      widget.media.title,
+                      _media.title,
                       style: kLargeTitleStyle,
                     ),
                   ),
@@ -101,7 +54,7 @@ class _SingleMediaState extends State<SingleMedia> {
                     height: kVerticalSpacer / 3,
                   ),
                   Text(
-                    _mediaDetail != null ? _mediaDetail!.tagline : '',
+                    widget.mediaDetail.tagline,
                     style: kTagLineStyle,
                   ),
                   SizedBox(
@@ -109,9 +62,7 @@ class _SingleMediaState extends State<SingleMedia> {
                     width: double.infinity,
                     child: ListView.separated(
                       scrollDirection: Axis.horizontal,
-                      itemCount: _mediaDetail != null
-                          ? _mediaDetail!.genres.length
-                          : 0,
+                      itemCount: widget.mediaDetail.genres.length,
                       separatorBuilder: (BuildContext context, int index) {
                         return const Text(
                           " - ",
@@ -119,8 +70,7 @@ class _SingleMediaState extends State<SingleMedia> {
                         );
                       },
                       itemBuilder: (BuildContext context, int index) {
-                        var g =
-                            _mediaDetail != null ? _mediaDetail!.genres : [];
+                        var g = widget.mediaDetail.genres;
                         return Text(
                           "${g[index]['name']}",
                           style: kGenreStyle,
@@ -139,7 +89,7 @@ class _SingleMediaState extends State<SingleMedia> {
                     height: kVerticalSpacer / 2,
                   ),
                   Text(
-                    widget.media.overview,
+                    _media.overview,
                     style: kBodyLabelStyle,
                   ),
                   const SizedBox(
@@ -152,13 +102,11 @@ class _SingleMediaState extends State<SingleMedia> {
                   const SizedBox(
                     height: kVerticalSpacer / 2,
                   ),
-                  dateFormat != null
-                      ? Text(
-                          dateFormat!.format(widget.media.releaseDate),
-                          style: kBodyLabelStyle,
-                          textAlign: TextAlign.left,
-                        )
-                      : const Text(''),
+                  Text(
+                    dateFormat.format(_media.releaseDate),
+                    style: kBodyLabelStyle,
+                    textAlign: TextAlign.left,
+                  ),
                   const SizedBox(
                     height: kVerticalSpacer,
                   ),
@@ -170,14 +118,14 @@ class _SingleMediaState extends State<SingleMedia> {
                     height: kVerticalSpacer / 2,
                   ),
                   Text(
-                    '${(_mediaDetail != null ? _mediaDetail!.runtime / 60 : 0).truncate().toString().padLeft(2, '0')} : ${(_mediaDetail != null ? _mediaDetail!.runtime % 60 : 0).truncate().toString().padLeft(2, '0')}',
+                    '${(widget.mediaDetail.runtime / 60).truncate().toString().padLeft(2, '0')} : ${(widget.mediaDetail.runtime % 60).truncate().toString().padLeft(2, '0')}',
                     style: kBodyLabelStyle,
                     textAlign: TextAlign.left,
                   ),
                   const SizedBox(
                     height: kVerticalSpacer,
                   ),
-                  //ActorList(movieId: widget.media.movieId),
+                  ActorList(movieId: _media.movieId),
                 ],
               ),
             )

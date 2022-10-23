@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 @immutable
 class Media {
-  final int movieId;
+  final int id;
   final String title;
   final String backdropPath;
   final String posterPath;
@@ -12,7 +12,7 @@ class Media {
   final DateTime releaseDate;
 
   const Media(
-      {this.movieId = 0,
+      {this.id = 0,
       this.title = "",
       this.backdropPath = "",
       this.posterPath = "",
@@ -23,7 +23,7 @@ class Media {
 
   factory Media.fromJson(Map<String, dynamic> json) {
     return Media(
-      movieId: json['id'],
+      id: json['id'],
       title: json['title'] ?? json['name'],
       backdropPath: json['backdrop_path'],
       posterPath: json['poster_path'],
@@ -37,6 +37,6 @@ class Media {
 
   @override
   String toString() {
-    return 'Movie{movieId: $movieId, title: $title, backdropPath: $backdropPath, posterPath: $posterPath, overview: $overview, popularity: $popularity, voteAverage: $voteAverage, releaseDate: $releaseDate}';
+    return 'Movie{movieId: $id, title: $title, backdropPath: $backdropPath, posterPath: $posterPath, overview: $overview, popularity: $popularity, voteAverage: $voteAverage, releaseDate: $releaseDate}';
   }
 }

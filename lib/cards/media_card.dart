@@ -3,7 +3,7 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:movies/cards/single_media_picture.dart';
 import 'package:movies/models/media.dart';
-import 'package:movies/routes/routes.dart';
+import 'package:movies/screens/single_media.dart';
 import 'package:movies/styles/constants.dart';
 
 import 'media_rate.dart';
@@ -34,7 +34,10 @@ class _MediaCardState extends State<MediaCard> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, kSingleMediaRoute,arguments: widget.media);
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => SingleMedia(media: widget.media)));
       },
       child: Padding(
         padding: EdgeInsets.only(
