@@ -9,12 +9,13 @@ import 'package:http/http.dart' as http;
 import '../cards/backdrop_path.dart';
 import '../cards/single_media_picture.dart';
 import '../partials/buttons/close_button.dart';
+import '../partials/sliders/actor_slider.dart';
 import '../partials/stars.dart';
 
 class SingleMedia extends StatefulWidget {
   final Media media;
 
-  const SingleMedia({required this.media,Key? key}) : super(key: key);
+  const SingleMedia({required this.media, Key? key}) : super(key: key);
 
   @override
   State<SingleMedia> createState() => _SingleMediaState();
@@ -25,21 +26,21 @@ class _SingleMediaState extends State<SingleMedia> {
   DateFormat? dateFormat;
 
   void getMediaDetailFromApi() {
-      http
-          .get(Uri.parse(
-              'https://api.themoviedb.org/3/movie/${widget.media.id}?api_key=fc0b570a0ec2e5a82a99bf4d8340e012&language=fr-fr'))
-          .then((response) {
-        if (response.statusCode == 200) {
-          setState(() {
-            _mediaDetail = MediaDetail.fromJson(jsonDecode(response.body));
-          });
-        } else {
-          throw Exception(
-              'Oups ! ${response.statusCode} : ${response.reasonPhrase} \n id ! ${widget.media.id}');
-        }
-      }).onError((error, stackTrace) {
-        throw Exception(error);
-      });
+    http
+        .get(Uri.parse(
+            'https://api.themoviedb.org/3/movie/${widget.media.id}?api_key=fc0b570a0ec2e5a82a99bf4d8340e012&language=fr-fr'))
+        .then((response) {
+      if (response.statusCode == 200) {
+        setState(() {
+          _mediaDetail = MediaDetail.fromJson(jsonDecode(response.body));
+        });
+      } else {
+        throw Exception(
+            'Oups ! ${response.statusCode} : ${response.reasonPhrase} \n id ! ${widget.media.id}');
+      }
+    }).onError((error, stackTrace) {
+      throw Exception(error);
+    });
   }
 
   @override
@@ -177,10 +178,10 @@ class _SingleMediaState extends State<SingleMedia> {
                   const SizedBox(
                     height: kVerticalSpacer,
                   ),
-                  //ActorList(movieId: widget.media.movieId),
                 ],
               ),
-            )
+            ),
+            ActorSlider(movieId: widget.media.id),
           ],
         ),
       ),

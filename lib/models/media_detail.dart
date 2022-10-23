@@ -14,7 +14,7 @@ class MediaDetail {
       required this.runtime,
       required this.genres});
 
-  static MediaDetail fromJson(Map<String, dynamic> json) {
+  factory MediaDetail.fromJson(Map<String, dynamic> json) {
     return MediaDetail(
         homePage: json['homepage'],
         tagline: json['tagline'],
