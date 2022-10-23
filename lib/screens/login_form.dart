@@ -5,7 +5,7 @@ import 'package:movies/partials/headers/header.dart';
 import 'package:movies/partials/links/link.dart';
 import 'package:movies/routes/routes.dart';
 import '../partials/form/email_input.dart';
-import '../partials/form/password_inout.dart';
+import '../partials/form/password_input.dart';
 import '../styles/constants.dart';
 
 class LoginForm extends StatelessWidget {
