@@ -15,11 +15,7 @@ class Button extends StatelessWidget {
       onTap: onPressed,
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: kVerticalSpacer / 2),
-        decoration: BoxDecoration(
-          color: kCardPopupBackgroundColor,
-          borderRadius: kBorderRadiusItem,
-          boxShadow: kBoxShadowItem,
-        ),
+        decoration: kBoxDecoration,
         child: Text(
           label,
           textAlign: TextAlign.center,

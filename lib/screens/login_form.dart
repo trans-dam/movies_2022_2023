@@ -37,10 +37,7 @@ class LoginForm extends StatelessWidget {
                     vertical: kVerticalSpacer / 2,
                     horizontal: kHorizontalSpacer,
                   ),
-                  decoration: BoxDecoration(
-                      color: kCardPopupBackgroundColor,
-                      boxShadow: kBoxShadowItem,
-                      borderRadius: kBorderRadiusItem),
+                  decoration: kBoxDecoration,
                   child: Column(
                     children: const [
                       EmailInput(),
@@ -74,7 +71,7 @@ class LoginForm extends StatelessWidget {
                 Button(
                     label: 'Se connecter',
                     onPressed: () {
-                      goHome(loginFormKey: _loginFormKey, context: context);
+                      goHome(formKey: _loginFormKey, context: context);
                     })
               ],
             ),

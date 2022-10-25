@@ -74,7 +74,7 @@ class _ResetPasswordFormState extends State<ResetPasswordForm> {
                 Button(
                     label: 'Envoyer email de réinitialisation',
                     onPressed: () {
-                      goHome(loginFormKey: _resetPasswordFormKey, context: context);
+                      goHome(formKey: _resetPasswordFormKey, context: context);
                     })
               ],
             ),

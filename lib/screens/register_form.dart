@@ -87,7 +87,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 Button(
                     label: 'Créer un compte',
                     onPressed: () {
-                      goHome(loginFormKey: _registerFormKey, context: context);
+                      goHome(formKey: _registerFormKey, context: context);
                     })
               ],
             ),
