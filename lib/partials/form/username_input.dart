@@ -11,7 +11,7 @@ class UserNameInput extends StatelessWidget {
       icon: Icons.person,
       labelText: 'Votre nom d’utilisateur',
       hintText: 'unique.name',
-      keyboardType: TextInputType.name,
+      keyboardType: TextInputType.text,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Le nom d’utilisateur doit être renseigné.';
