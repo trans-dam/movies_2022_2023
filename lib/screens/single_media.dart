@@ -14,8 +14,10 @@ import '../partials/stars.dart';
 
 class SingleMedia extends StatefulWidget {
   final Media media;
+  final String type;
 
-  const SingleMedia({required this.media, Key? key}) : super(key: key);
+  const SingleMedia({required this.media, Key? key, required this.type})
+      : super(key: key);
 
   @override
   State<SingleMedia> createState() => _SingleMediaState();
@@ -28,7 +30,7 @@ class _SingleMediaState extends State<SingleMedia> {
   void getMediaDetailFromApi() {
     http
         .get(Uri.parse(
-            'https://api.themoviedb.org/3/movie/${widget.media.id}?api_key=fc0b570a0ec2e5a82a99bf4d8340e012&language=fr-fr'))
+            'https://api.themoviedb.org/3/${widget.type}/${widget.media.id}?api_key=fc0b570a0ec2e5a82a99bf4d8340e012&language=fr-fr'))
         .then((response) {
       if (response.statusCode == 200) {
         setState(() {
@@ -181,7 +183,7 @@ class _SingleMediaState extends State<SingleMedia> {
                 ],
               ),
             ),
-            ActorSlider(movieId: widget.media.id),
+            ActorSlider(movieId: widget.media.id,type:widget.type),
           ],
         ),
       ),

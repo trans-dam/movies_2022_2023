@@ -12,8 +12,9 @@ import 'media_rate.dart';
 class MediaCard extends StatefulWidget {
   final Media media;
   final bool isLast;
+  final String type;
 
-  const MediaCard({required this.media, this.isLast = false, Key? key})
+  const MediaCard({required this.media, this.isLast = false, Key? key, required this.type})
       : super(key: key);
 
   @override
@@ -37,7 +38,7 @@ class _MediaCardState extends State<MediaCard> {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => SingleMedia(media: widget.media)));
+                builder: (context) => SingleMedia(media: widget.media, type:widget.type)));
       },
       child: Padding(
         padding: EdgeInsets.only(

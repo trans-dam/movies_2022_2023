@@ -10,17 +10,17 @@ import '../../styles/constants.dart';
 @immutable
 class ActorSlider extends StatelessWidget {
   final int movieId;
+  final String type;
 
-  const ActorSlider({required this.movieId, Key? key}) : super(key: key);
+  const ActorSlider({required this.movieId, Key? key, required this.type})
+      : super(key: key);
 
 // A function that converts a response body into a List<Actor>.
   List<Actor> parseActors(String responseBody) {
     List<Actor> actors = [];
     final parsed = jsonDecode(responseBody);
-    print(parsed['cast']);
     for (var data in parsed['cast']) {
       Actor actor = Actor.fromJson(data);
-      print(actor);
       actors.add(actor);
     }
 
@@ -29,7 +29,7 @@ class ActorSlider extends StatelessWidget {
 
   Future<List<Actor>> fetchActors() async {
     final response = await http.get(Uri.parse(
-        'https://api.themoviedb.org/3/movie/$movieId/casts?api_key=fc0b570a0ec2e5a82a99bf4d8340e012&language=fr-fr'));
+        'https://api.themoviedb.org/3/$type/$movieId/credits?api_key=fc0b570a0ec2e5a82a99bf4d8340e012&language=fr-fr'));
 
     // Use the compute function to run parsePhotos in a separate isolate.
     return compute(parseActors, response.body);
@@ -54,7 +54,7 @@ class ActorSlider extends StatelessWidget {
                   snapshot.hasData) {
                 final actors = snapshot.data!;
                 return ListView.builder(
-                  scrollDirection:Axis.horizontal,
+                  scrollDirection: Axis.horizontal,
                   itemCount: actors.length,
                   itemBuilder: (context, index) {
                     return ActorCard(

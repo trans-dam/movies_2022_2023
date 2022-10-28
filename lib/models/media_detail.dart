@@ -16,9 +16,9 @@ class MediaDetail {
 
   factory MediaDetail.fromJson(Map<String, dynamic> json) {
     return MediaDetail(
-        homePage: json['homepage'],
-        tagline: json['tagline'],
-        runtime: json['runtime'],
-        genres: json['genres']);
+        homePage: json['homepage'] ?? "",
+        tagline: json['tagline'] ?? "",
+        runtime: json['runtime'] ?? 0,
+        genres: json['genres'] ?? []);
   }
 }
