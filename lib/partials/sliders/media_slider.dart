@@ -106,6 +106,7 @@ class _MediaSliderState extends State<MediaSlider> {
                   opacity: _currentMovie == index ? 1 : 0.7,
                   child: MediaCard(
                       media: _medias[index],
+                      type:widget.type,
                       isLast: index == _medias.length - 1),
                 );
               }),

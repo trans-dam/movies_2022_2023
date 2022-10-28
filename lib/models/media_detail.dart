@@ -14,11 +14,11 @@ class MediaDetail {
       required this.runtime,
       required this.genres});
 
-  MediaDetail fromJson(Map<String, dynamic> json) {
+  factory MediaDetail.fromJson(Map<String, dynamic> json) {
     return MediaDetail(
-        homePage: json['homepage'],
-        tagline: json['tagline'],
-        runtime: json['runtime'],
-        genres: json['genres']);
+        homePage: json['homepage'] ?? "",
+        tagline: json['tagline'] ?? "",
+        runtime: json['runtime'] ?? 0,
+        genres: json['genres'] ?? []);
   }
 }
