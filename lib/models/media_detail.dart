@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 
-// TODO : Check compatibility with (immutable)
 @immutable
 class MediaDetail {
   final String homePage;
@@ -20,5 +19,10 @@ class MediaDetail {
         tagline: json['tagline'] ?? "",
         runtime: json['runtime'] ?? 0,
         genres: json['genres'] ?? []);
+  }
+
+  @override
+  String toString() {
+    return "{homePage : $homePage,tagline : $tagline,runtime : $runtime,genres : $genres}";
   }
 }

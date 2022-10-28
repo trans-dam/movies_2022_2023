@@ -19,7 +19,6 @@ class _SingleMediaState extends State<SingleMedia> {
   MediaDetail? mediaDetail;
 
   void getMediaDetail() {
-    //
     print(
         'https://api.themoviedb.org/3/${widget.type}/${widget.media.id}?api_key=fc0b570a0ec2e5a82a99bf4d8340e012&language=fr-fr');
   }
