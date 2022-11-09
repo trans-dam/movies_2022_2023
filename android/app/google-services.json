@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "773031845230",
+    "project_id": "movies2223-fb009",
+    "storage_bucket": "movies2223-fb009.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:773031845230:android:bd55ba71b7ce20f668757f",
+        "android_client_info": {
+          "package_name": "be.hepl.movies_2022_2023"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "773031845230-d7t6tfd4dvurlaq530ten7o0ku3b0nj3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmKSJX6rsNSUBCUZfpBTSV8a6PAhZVjj0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "773031845230-d7t6tfd4dvurlaq530ten7o0ku3b0nj3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

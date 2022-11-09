@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/partials/buttons/button.dart';
@@ -6,7 +7,6 @@ import 'package:movies/partials/form/password_input.dart';
 import 'package:movies/partials/form/username_input.dart';
 import '../partials/headers/form_header.dart';
 import '../partials/links/link.dart';
-import '../routes/router.dart';
 import '../routes/routes.dart';
 import '../styles/constants.dart';
 
@@ -19,6 +19,9 @@ class RegisterForm extends StatefulWidget {
 
 class _RegisterFormState extends State<RegisterForm> {
   final _registerFormKey = GlobalKey<FormState>();
+  String _userName = "";
+  String _email = "";
+  String _password = "";
 
   @override
   Widget build(BuildContext context) {
@@ -50,18 +53,28 @@ class _RegisterFormState extends State<RegisterForm> {
                       boxShadow: kBoxShadowItem,
                       borderRadius: kBorderRadiusItem),
                   child: Column(
-                    children: const [
-                      UserNameInput(),
-                      Divider(
+                    children: [
+                      UserNameInput(
+                        onChanged: (value) {
+                          _userName = value;
+                        },
+                      ),
+                      const Divider(
                         color: kMainTextColor,
                         height: kVerticalSpacer * 2,
                       ),
-                      EmailInput(),
-                      Divider(
+                      EmailInput(
+                        onChanged: (value) {
+                          _email = value;
+                        },
+                      ),
+                      const Divider(
                         color: kMainTextColor,
                         height: kVerticalSpacer * 2,
                       ),
-                      PasswordInput(),
+                      PasswordInput(onChanged: (value) {
+                        _password = value;
+                      }),
                     ],
                   ),
                 ),
@@ -87,7 +100,24 @@ class _RegisterFormState extends State<RegisterForm> {
                 Button(
                     label: 'Créer un compte',
                     onPressed: () {
-                      goHome(formKey: _registerFormKey, context: context);
+                      if (_registerFormKey.currentState != null &&
+                          _registerFormKey.currentState!.validate()) {
+                          FirebaseAuth.instance
+                              .createUserWithEmailAndPassword(
+                                  email: _email, password: _password)
+                              .then((value) {
+                            Navigator.pushNamed(context, kHomeRoute);
+                          }).onError((error, stackTrace) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                  content: Text(
+                                    error.toString(),
+                                    style: const TextStyle(color: Colors.white),
+                                  ),
+                                  backgroundColor: Colors.redAccent),
+                            );
+                          });
+                      }
                     })
               ],
             ),

@@ -4,7 +4,8 @@ import 'package:movies/partials/form/text_input.dart';
 
 @immutable
 class EmailInput extends StatelessWidget {
-  const EmailInput({Key? key}) : super(key: key);
+  final ValueChanged<String>? onChanged;
+  const EmailInput({this.onChanged, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +21,7 @@ class EmailInput extends StatelessWidget {
           return 'L’adresse mail doit être une adresse mail valide.';
         }
       },
+      onChanged: onChanged,
     );
   }
 }

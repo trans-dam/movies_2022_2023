@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/partials/buttons/button.dart';
 import 'package:movies/partials/headers/form_header.dart';
@@ -5,7 +6,6 @@ import 'package:movies/partials/links/link.dart';
 import 'package:movies/routes/routes.dart';
 import '../partials/form/email_input.dart';
 import '../partials/form/password_input.dart';
-import '../routes/router.dart';
 import '../styles/constants.dart';
 
 class LoginForm extends StatelessWidget {
@@ -14,6 +14,8 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String _email = "";
+    String _password = "";
     return Scaffold(
       body: SafeArea(
         child: Form(
@@ -39,13 +41,19 @@ class LoginForm extends StatelessWidget {
                   ),
                   decoration: kBoxDecoration,
                   child: Column(
-                    children: const [
-                      EmailInput(),
-                      Divider(
+                    children: [
+                      EmailInput(
+                        onChanged: (value) {
+                          _email = value;
+                        },
+                      ),
+                      const Divider(
                         color: kMainTextColor,
                         height: kVerticalSpacer * 2,
                       ),
-                      PasswordInput(),
+                      PasswordInput(onChanged: (value) {
+                        _password = value;
+                      }),
                     ],
                   ),
                 ),
@@ -71,7 +79,23 @@ class LoginForm extends StatelessWidget {
                 Button(
                     label: 'Se connecter',
                     onPressed: () {
-                      goHome(formKey: _loginFormKey, context: context);
+                      if (_loginFormKey.currentState != null &&
+                          _loginFormKey.currentState!.validate()) {
+                        FirebaseAuth.instance.signInWithEmailAndPassword(
+                            email: _email, password: _password)
+                            .then((value) {
+                          Navigator.pushNamed(context, kHomeRoute);
+                        }).onError((error, stackTrace) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                                content: Text(
+                                  error.toString(),
+                                  style: const TextStyle(color: Colors.white),
+                                ),
+                                backgroundColor: Colors.redAccent),
+                          );
+                        });
+                      }
                     })
               ],
             ),
