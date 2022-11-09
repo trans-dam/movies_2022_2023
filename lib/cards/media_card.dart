@@ -48,7 +48,7 @@ class _MediaCardState extends State<MediaCard> {
             alignment: AlignmentDirectional.bottomStart,
             children: [
               Padding(
-                padding: const EdgeInsets.only(bottom: 25),
+                padding: const EdgeInsets.only(bottom: kVerticalSpacer),
                 child: SingleMediaPicture(path: widget.media.posterPath),
               ),
               Row(
