@@ -10,6 +10,7 @@ class PasswordInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextInput(
+      value: "1234567890",
       icon: Icons.password,
       labelText: 'Votre mot de passe',
       keyboardType: TextInputType.visiblePassword,

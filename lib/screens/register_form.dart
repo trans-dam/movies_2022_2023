@@ -5,6 +5,7 @@ import 'package:movies/partials/buttons/button.dart';
 import 'package:movies/partials/form/email_input.dart';
 import 'package:movies/partials/form/password_input.dart';
 import 'package:movies/partials/form/username_input.dart';
+import '../models/error_firebase_auth.dart';
 import '../partials/headers/form_header.dart';
 import '../partials/links/link.dart';
 import '../routes/routes.dart';
@@ -20,8 +21,8 @@ class RegisterForm extends StatefulWidget {
 class _RegisterFormState extends State<RegisterForm> {
   final _registerFormKey = GlobalKey<FormState>();
   String _userName = "";
-  String _email = "";
-  String _password = "";
+  String _email = "daniel.schreurs@hotmail.com";
+  String _password = "1234567890";
 
   @override
   Widget build(BuildContext context) {
@@ -99,24 +100,31 @@ class _RegisterFormState extends State<RegisterForm> {
                 ),
                 Button(
                     label: 'Créer un compte',
-                    onPressed: () {
+                    onPressed: () async {
                       if (_registerFormKey.currentState != null &&
                           _registerFormKey.currentState!.validate()) {
-                          FirebaseAuth.instance
+                        try {
+                          await FirebaseAuth.instance
                               .createUserWithEmailAndPassword(
                                   email: _email, password: _password)
                               .then((value) {
-                            Navigator.pushNamed(context, kHomeRoute);
-                          }).onError((error, stackTrace) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(
                                   content: Text(
-                                    error.toString(),
-                                    style: const TextStyle(color: Colors.white),
-                                  ),
-                                  backgroundColor: Colors.redAccent),
+                                      'Bonjour ${FirebaseAuth.instance.currentUser!.email}')),
                             );
+                            Navigator.pushNamed(context, kHomeRoute);
                           });
+                        } on FirebaseAuthException catch (e) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                                content: Text(
+                                  errors[e.code]!,
+                                  style: const TextStyle(color: Colors.white),
+                                ),
+                                backgroundColor: Colors.redAccent),
+                          );
+                        }
                       }
                     })
               ],

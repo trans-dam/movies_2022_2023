@@ -4,6 +4,7 @@ import 'package:movies/partials/buttons/button.dart';
 import 'package:movies/partials/headers/form_header.dart';
 import 'package:movies/partials/links/link.dart';
 import 'package:movies/routes/routes.dart';
+import '../models/error_firebase_auth.dart';
 import '../partials/form/email_input.dart';
 import '../partials/form/password_input.dart';
 import '../styles/constants.dart';
@@ -11,11 +12,11 @@ import '../styles/constants.dart';
 class LoginForm extends StatelessWidget {
   LoginForm({Key? key}) : super(key: key);
   final _loginFormKey = GlobalKey<FormState>();
+  String _email = "daniel.schreurs@hotmail.com";
+  String _password = "1234567890";
 
   @override
   Widget build(BuildContext context) {
-    String _email = "";
-    String _password = "";
     return Scaffold(
       body: SafeArea(
         child: Form(
@@ -78,23 +79,31 @@ class LoginForm extends StatelessWidget {
                 ),
                 Button(
                     label: 'Se connecter',
-                    onPressed: () {
+                    onPressed: () async {
                       if (_loginFormKey.currentState != null &&
                           _loginFormKey.currentState!.validate()) {
-                        FirebaseAuth.instance.signInWithEmailAndPassword(
-                            email: _email, password: _password)
-                            .then((value) {
-                          Navigator.pushNamed(context, kHomeRoute);
-                        }).onError((error, stackTrace) {
+                        try {
+                          await FirebaseAuth.instance
+                              .signInWithEmailAndPassword(
+                                  email: _email, password: _password)
+                              .then((value) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                  content: Text(
+                                      'Bonjour ${FirebaseAuth.instance.currentUser!.email}')),
+                            );
+                            Navigator.pushNamed(context, kHomeRoute);
+                          });
+                        } on FirebaseAuthException catch (e) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                                 content: Text(
-                                  error.toString(),
+                                  errors[e.code]!,
                                   style: const TextStyle(color: Colors.white),
                                 ),
                                 backgroundColor: Colors.redAccent),
                           );
-                        });
+                        }
                       }
                     })
               ],

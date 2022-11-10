@@ -10,6 +10,7 @@ class EmailInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextInput(
+      value: "daniel.schreurs@hotmail.com",
       icon: Icons.mail,
       labelText: 'Votre email',
       hintText: 'exemple@mail.com',

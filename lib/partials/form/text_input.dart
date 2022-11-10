@@ -11,10 +11,10 @@ class TextInput extends StatelessWidget {
       this.hintText = "",
       this.keyboardType = TextInputType.text,
       required this.validator,
-
       this.obscureText = false,
       this.autofocus = false,
       this.onChanged,
+      this.value,
       Key? key})
       : super(key: key);
   final IconData icon;
@@ -25,10 +25,12 @@ class TextInput extends StatelessWidget {
   final TextInputType keyboardType;
   final FormFieldValidator<String> validator;
   final ValueChanged<String>? onChanged;
+  final String? value;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: value,
       validator: validator,
       keyboardType: keyboardType,
       onChanged: onChanged,

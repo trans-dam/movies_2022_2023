@@ -11,6 +11,7 @@ class UserNameInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextInput(
       icon: Icons.person,
+      value: "DanielSchreurs",
       labelText: 'Votre nom d’utilisateur',
       hintText: 'unique.name',
       keyboardType: TextInputType.text,
