@@ -144,3 +144,8 @@ const kCalloutLabelStyle = TextStyle(
   decoration: TextDecoration.none,
 );
 const double kCircularPercentIndicatorRadius = 30;
+
+final kBoxDecoration = BoxDecoration(
+    color: kCardPopupBackgroundColor,
+    boxShadow: kBoxShadowItem,
+    borderRadius: kBorderRadiusItem);

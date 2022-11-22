@@ -3,7 +3,6 @@ import 'package:movies/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/screens/home.dart';
 import 'package:movies/screens/reset_password_form.dart';
-import 'package:movies/screens/single_media.dart';
 
 import '../screens/login_form.dart';
 import '../screens/register_form.dart';
@@ -13,14 +12,13 @@ Map<String, WidgetBuilder> router = {
   kRegisterRoute: (context) => const RegisterForm(),
   kLoginRoute: (context) => LoginForm(),
   kResetPasswordRoute: (context) => const ResetPasswordForm(),
-  kSingleMediaRoute: (context) => const SingleMedia(),
 };
 
 
 
-goHome({loginFormKey, context}) {
-  if (loginFormKey.currentState != null &&
-      loginFormKey.currentState!.validate()) {
+goHome({formKey, context}) {
+  if (formKey.currentState != null &&
+      formKey.currentState!.validate()) {
     if (kDebugMode) {
       Navigator.pushNamed(context, kHomeRoute);
     } else {

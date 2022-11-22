@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:movies/cards/media_card.dart';
@@ -7,6 +6,7 @@ import '../../models/media.dart';
 import '../../styles/constants.dart';
 import '../headers/section_header.dart';
 
+@immutable
 class MediaSlider extends StatefulWidget {
   const MediaSlider(
       {required this.type,
@@ -106,7 +106,8 @@ class _MediaSliderState extends State<MediaSlider> {
                   opacity: _currentMovie == index ? 1 : 0.7,
                   child: MediaCard(
                       media: _medias[index],
-                      isLast: index == _medias.length - 1),
+                      isLast: index == _medias.length - 1,
+                      type: widget.type),
                 );
               }),
         ),

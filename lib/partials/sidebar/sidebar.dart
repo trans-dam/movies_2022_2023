@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/routes/routes.dart';
 
@@ -15,7 +16,7 @@ class SidebarScreen extends StatefulWidget {
 
 class _SidebarScreenState extends State<SidebarScreen> {
   Future<void> _signOut() async {
-    //await FirebaseAuth.instance.signOut();
+    await FirebaseAuth.instance.signOut();
   }
 
   @override

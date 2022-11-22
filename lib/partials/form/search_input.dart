@@ -4,7 +4,9 @@ import 'package:movies/styles/constants.dart';
 
 @immutable
 class SearchInput extends StatelessWidget {
-  const SearchInput({Key? key}) : super(key: key);
+  final ValueChanged<String>? onChanged;
+
+  const SearchInput({this.onChanged, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,7 @@ class SearchInput extends StatelessWidget {
             hintText: 'Un film, un genre, etc.',
             keyboardType: TextInputType.text,
             validator: (value) {},
+            onChanged: onChanged,
             autofocus: false),
       ),
     );

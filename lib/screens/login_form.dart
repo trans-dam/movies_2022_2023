@@ -1,16 +1,19 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/partials/buttons/button.dart';
 import 'package:movies/partials/headers/form_header.dart';
 import 'package:movies/partials/links/link.dart';
 import 'package:movies/routes/routes.dart';
+import '../models/error_firebase_auth.dart';
 import '../partials/form/email_input.dart';
 import '../partials/form/password_input.dart';
-import '../routes/router.dart';
 import '../styles/constants.dart';
 
 class LoginForm extends StatelessWidget {
   LoginForm({Key? key}) : super(key: key);
   final _loginFormKey = GlobalKey<FormState>();
+  String _email = "daniel.schreurs@hotmail.com";
+  String _password = "1234567890";
 
   @override
   Widget build(BuildContext context) {
@@ -37,18 +40,21 @@ class LoginForm extends StatelessWidget {
                     vertical: kVerticalSpacer / 2,
                     horizontal: kHorizontalSpacer,
                   ),
-                  decoration: BoxDecoration(
-                      color: kCardPopupBackgroundColor,
-                      boxShadow: kBoxShadowItem,
-                      borderRadius: kBorderRadiusItem),
+                  decoration: kBoxDecoration,
                   child: Column(
-                    children: const [
-                      EmailInput(),
-                      Divider(
+                    children: [
+                      EmailInput(
+                        onChanged: (value) {
+                          _email = value;
+                        },
+                      ),
+                      const Divider(
                         color: kMainTextColor,
                         height: kVerticalSpacer * 2,
                       ),
-                      PasswordInput(),
+                      PasswordInput(onChanged: (value) {
+                        _password = value;
+                      }),
                     ],
                   ),
                 ),
@@ -73,8 +79,32 @@ class LoginForm extends StatelessWidget {
                 ),
                 Button(
                     label: 'Se connecter',
-                    onPressed: () {
-                      goHome(loginFormKey: _loginFormKey, context: context);
+                    onPressed: () async {
+                      if (_loginFormKey.currentState != null &&
+                          _loginFormKey.currentState!.validate()) {
+                        try {
+                          await FirebaseAuth.instance
+                              .signInWithEmailAndPassword(
+                                  email: _email, password: _password)
+                              .then((value) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                  content: Text(
+                                      'Bonjour ${FirebaseAuth.instance.currentUser!.email}')),
+                            );
+                            Navigator.pushNamed(context, kHomeRoute);
+                          });
+                        } on FirebaseAuthException catch (e) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                                content: Text(
+                                  errors[e.code]!,
+                                  style: const TextStyle(color: Colors.white),
+                                ),
+                                backgroundColor: Colors.redAccent),
+                          );
+                        }
+                      }
                     })
               ],
             ),
